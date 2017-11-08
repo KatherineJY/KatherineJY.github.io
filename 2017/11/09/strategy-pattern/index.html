@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="策略模式定义算法族，把一系列平行的算法封装起来，彼此可以替换。 因为对接口、上转型什么的忘得差不多了，初看的时候，觉得迷迷糊糊的。复习了一下java之后再看，觉得非常精妙。  场景如下：有一个抽象类鸭子，它定义了方法quack()、swim()、display();自然界的鸭子都会叫、会游泳，都一样。display()则根据每种鸭子的外观具体来实现。这个时候，假如要给鸭子加入fly()的方法，然而">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vps+ssr">
-<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/vps-ssr/index.html">
+<meta property="og:title" content="策略模式">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/strategy-pattern/index.html">
 <meta property="og:site_name" content="KatherineJY">
+<meta property="og:description" content="策略模式定义算法族，把一系列平行的算法封装起来，彼此可以替换。 因为对接口、上转型什么的忘得差不多了，初看的时候，觉得迷迷糊糊的。复习了一下java之后再看，觉得非常精妙。  场景如下：有一个抽象类鸭子，它定义了方法quack()、swim()、display();自然界的鸭子都会叫、会游泳，都一样。display()则根据每种鸭子的外观具体来实现。这个时候，假如要给鸭子加入fly()的方法，然而">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-08T17:09:55.638Z">
+<meta property="og:updated_time" content="2017-11-08T18:41:21.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vps+ssr">
+<meta name="twitter:title" content="策略模式">
+<meta name="twitter:description" content="策略模式定义算法族，把一系列平行的算法封装起来，彼此可以替换。 因为对接口、上转型什么的忘得差不多了，初看的时候，觉得迷迷糊糊的。复习了一下java之后再看，觉得非常精妙。  场景如下：有一个抽象类鸭子，它定义了方法quack()、swim()、display();自然界的鸭子都会叫、会游泳，都一样。display()则根据每种鸭子的外观具体来实现。这个时候，假如要给鸭子加入fly()的方法，然而">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/vps-ssr/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/strategy-pattern/"/>
 
 
 
 
 
-  <title>vps+ssr | KatherineJY</title>
+  <title>策略模式 | KatherineJY</title>
   
 
 
@@ -289,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/vps-ssr/">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/strategy-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KatherineJY">
@@ -306,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vps+ssr</h1>
+          <h1 class="post-title" itemprop="name headline">策略模式</h1>
         
 
         <div class="post-meta">
@@ -318,7 +322,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T01:09:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T02:34:58+08:00">
                 2017-11-09
               </time>
             
@@ -356,7 +360,34 @@
       
 
       
-        
+        <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><pre><code>定义算法族，把一系列平行的算法封装起来，彼此可以替换。
+</code></pre><p>因为对接口、上转型什么的忘得差不多了，初看的时候，觉得迷迷糊糊的。复习了一下java之后再看，觉得非常精妙。</p>
+<hr>
+<p>场景如下：<br>有一个抽象类鸭子，它定义了方法quack()、swim()、display();自然界的鸭子都会叫、会游泳，都一样。display()则根据每种鸭子的外观具体来实现。<br><br>这个时候，假如要给鸭子加入fly()的方法，然而这个方法只是某些鸭子有，毕竟不是人人都能上天。那么该如何解决呢？<br><br>很自然地会想到两种办法：<br></p>
+<ol>
+<li>继承<ul>
+<li>直接把fly（）加在抽象类Duck里。这样做的结果是，牵一发而动全身，毕竟会飞的鸭子又不是多数，对大部分鸭子来说这个方法都是要覆盖掉的。要是子类很多，改起来相当麻烦</li>
+</ul>
+</li>
+<li>接口<ul>
+<li>把fly变成一个接口，但是同样会有问题，因为飞的方式有很多种，有些鸭子的飞行方式一样，有些不一样。每次都直接实现方法，代码复用很差。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>针对这类场景，策略模式采用的是把变化的部分与不变的部分分离，具体就是把鸭子的行为分离出来。</p>
+<ul>
+<li><p>用一个接口表示飞的行为，用实现飞接口的类来代表飞的方式。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">FlyBehavior</span> </span>&#123;  <span class="comment">//把飞这种行为定义为接口</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyWithWings</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;   <span class="comment">//实现飞接口的一个类</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"I'm flying with wings..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FlyNoWay</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;  <span class="comment">//实现飞接口的另一个类</span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>&#123;</div><div class="line">      System.out.println(<span class="string">"I can't fly ..."</span>);</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这样飞行就从鸭子类中脱离了出来，飞行类能被各种对象复用，包括非鸭子对象。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Duck</span> </span>&#123;</div><div class="line">    FlyBehavior flyBehavior;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Duck</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span></span>&#123;<span class="comment">//鸭子执行各自的飞行方式</span></div><div class="line">            flyBehavior.fly();      <span class="comment">//鸭子类通过FlyBehavior的实例化对象去执行飞这个行为</span></div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyBehavior</span><span class="params">(FlyBehavior fb)</span></span>&#123;<span class="comment">//还可以重新设置飞行的方式  更加灵活</span></div><div class="line">            flyBehavior = fb;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对于具体的某一只鸭子</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelDuck</span> <span class="keyword">extends</span> <span class="title">Duck</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelDuck</span><span class="params">()</span></span>&#123;</div><div class="line">            flyBehavior = <span class="keyword">new</span> FlyNoWay();<span class="comment">//根据情况，实例化所需的飞行类</span></div><div class="line">    &#125;</div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
     
@@ -371,6 +402,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
 
       
       
@@ -380,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/08/how-to-use-hexo-again/" rel="next" title="hexo again">
-                <i class="fa fa-chevron-left"></i> hexo again
+              <a href="/2017/11/09/subscribe-publish/" rel="next" title="事件订阅模型">
+                <i class="fa fa-chevron-left"></i> 事件订阅模型
               </a>
             
           </div>
@@ -389,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/09/my-next-configure/" rel="prev" title="my Next configure">
-                my Next configure <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -444,8 +477,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -516,6 +558,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

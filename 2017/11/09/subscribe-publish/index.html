@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="事件订阅模型：这个模型解决的是：某件事触发了多个对象的某些方法。 做法是当那件事情发生时，告知这些对象并让它们去执行相应的方法。  用java实现的话，很自然地会想到用监听器：（后来才知道还有个Observer，也可以用来实现）假设事件源是对象A的某个方法，对象B、C是受影响的两个对象。">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vps+ssr">
-<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/vps-ssr/index.html">
+<meta property="og:title" content="事件订阅模型">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/subscribe-publish/index.html">
 <meta property="og:site_name" content="KatherineJY">
+<meta property="og:description" content="事件订阅模型：这个模型解决的是：某件事触发了多个对象的某些方法。 做法是当那件事情发生时，告知这些对象并让它们去执行相应的方法。  用java实现的话，很自然地会想到用监听器：（后来才知道还有个Observer，也可以用来实现）假设事件源是对象A的某个方法，对象B、C是受影响的两个对象。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-08T17:09:55.638Z">
+<meta property="og:updated_time" content="2017-11-08T18:35:20.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vps+ssr">
+<meta name="twitter:title" content="事件订阅模型">
+<meta name="twitter:description" content="事件订阅模型：这个模型解决的是：某件事触发了多个对象的某些方法。 做法是当那件事情发生时，告知这些对象并让它们去执行相应的方法。  用java实现的话，很自然地会想到用监听器：（后来才知道还有个Observer，也可以用来实现）假设事件源是对象A的某个方法，对象B、C是受影响的两个对象。">
 
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/vps-ssr/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/subscribe-publish/"/>
 
 
 
 
 
-  <title>vps+ssr | KatherineJY</title>
+  <title>事件订阅模型 | KatherineJY</title>
   
 
 
@@ -289,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/vps-ssr/">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/subscribe-publish/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KatherineJY">
@@ -306,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vps+ssr</h1>
+          <h1 class="post-title" itemprop="name headline">事件订阅模型</h1>
         
 
         <div class="post-meta">
@@ -318,7 +322,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T01:09:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T02:23:25+08:00">
                 2017-11-09
               </time>
             
@@ -356,7 +360,31 @@
       
 
       
-        
+        <h3 id="事件订阅模型："><a href="#事件订阅模型：" class="headerlink" title="事件订阅模型："></a>事件订阅模型：</h3><pre><code>这个模型解决的是：某件事触发了多个对象的某些方法。
+做法是当那件事情发生时，告知这些对象并让它们去执行相应的方法。
+</code></pre><hr>
+<p>用java实现的话，很自然地会想到用监听器：（后来才知道还有个Observer，也可以用来实现）<br><br>假设事件源是对象A的某个方法，对象B、C是受影响的两个对象。<br><a id="more"></a></p>
+<ul>
+<li><p>创建类MyEvent继承EventObject，用来存放事件相关的数据。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyEvent</span> <span class="keyword">extends</span> <span class="title">EventObject</span></span>&#123;</div><div class="line">    <span class="keyword">boolean</span> status;</div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建监听器接口MyEventListener继承EventListener，并定义接口里的抽象方法：参数嘛当然就是上面指的MyEvent对象啦。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyEventListener</span> <span class="keyword">extends</span> <span class="title">EventListener</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myEvent</span><span class="params">(MyEvent event)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//这里是个反面教材。必须要说不要这样命名，myEvent和MyEvent，简直就是和自己过不去，血和泪的教训。然而我有点懒，不想一个个地方改了</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>class B、C实现MyEventListener接口里的抽象方法，就是根据MyEvent里的数据看是否调用B、C里的某个方法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bclass</span> <span class="keyword">implements</span> <span class="title">MyEventListener</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">workB</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"classB had done something"</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myEvent</span><span class="params">(MyEvent event)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(event.getListenerStatus())</div><div class="line">            workB();</div><div class="line">        &#125;    </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p>class A里要实现添加监听器、知会监听器。可以用集合collection来存放监听器序列，在初始化类的时候逐个添加。我是把addListener写成了一个单独的方法，因为如果后来受影响的对象又多了，也可以用此添加。<br>知会监听器就是：逐一枚举集合里的监听器，让它们执行各自的处理事件的方法。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">StorePrice</span><span class="params">()</span> </span>&#123;<span class="comment">//这就是ClassA的构造函数</span></div><div class="line">    price = <span class="number">0</span>;</div><div class="line">    addListeners(<span class="keyword">new</span> Bclass());</div><div class="line">    addListeners(<span class="keyword">new</span> Cclass());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addListeners</span><span class="params">( MyEventListener listener )</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(listenersList == <span class="keyword">null</span>)</div><div class="line">        listenersList = <span class="keyword">new</span> HashSet();</div><div class="line">    listenersList.add(listener);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">tellListeners</span><span class="params">(MyEvent event)</span> </span>&#123;</div><div class="line">    Iterator iterList = listenersList.iterator();</div><div class="line">    <span class="keyword">while</span>(iterList.hasNext()) &#123;</div><div class="line">        MyEventListener listener =(MyEventListener) iterList.next();</div><div class="line">        listener.myEvent(event);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>用C#实现的话，我只能说：“委托”真的很不好理解，但是用起来还蛮方便的一开始感觉 委托就跟java里的接口差不多不过在C#里，委托是一个类，一个更像方法清单一样的类。”委托的实例（）”就会执行委托方法清单里的所有方法</p>
+
       
     </div>
     
@@ -371,6 +399,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
 
       
       
@@ -380,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/08/how-to-use-hexo-again/" rel="next" title="hexo again">
-                <i class="fa fa-chevron-left"></i> hexo again
+              <a href="/2017/11/09/javascript-dom/" rel="next" title="《javascript dom 编程艺术》笔记">
+                <i class="fa fa-chevron-left"></i> 《javascript dom 编程艺术》笔记
               </a>
             
           </div>
@@ -390,8 +424,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/09/my-next-configure/" rel="prev" title="my Next configure">
-                my Next configure <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/09/strategy-pattern/" rel="prev" title="策略模式">
+                策略模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -444,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -516,6 +559,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件订阅模型："><span class="nav-number">1.</span> <span class="nav-text">事件订阅模型：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
