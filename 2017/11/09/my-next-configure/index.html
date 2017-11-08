@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我的next主题的配置这就是个备份参考的官方文档http://theme-next.iissnan.com/getting-started.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="my Next configure">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/my-next-configure/index.html">
+<meta property="og:site_name" content="KatherineJY">
+<meta property="og:description" content="我的next主题的配置这就是个备份参考的官方文档http://theme-next.iissnan.com/getting-started.html">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-08T18:04:54.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="my Next configure">
+<meta name="twitter:description" content="我的next主题的配置这就是个备份参考的官方文档http://theme-next.iissnan.com/getting-started.html">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/my-next-configure/"/>
+
+
+
+
+
+  <title>my Next configure | KatherineJY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KatherineJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/my-next-configure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">my Next configure</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T01:45:07+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="我的next主题的配置"><a href="#我的next主题的配置" class="headerlink" title="我的next主题的配置"></a>我的next主题的配置</h3><p>这就是个备份<br>参考的官方文档<code>http://theme-next.iissnan.com/getting-started.html</code><br><a id="more"></a><br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div><div class="line">568</div><div class="line">569</div><div class="line">570</div><div class="line">571</div><div class="line">572</div><div class="line">573</div><div class="line">574</div><div class="line">575</div><div class="line">576</div><div class="line">577</div><div class="line">578</div><div class="line">579</div><div class="line">580</div><div class="line">581</div><div class="line">582</div><div class="line">583</div><div class="line">584</div><div class="line">585</div><div class="line">586</div><div class="line">587</div><div class="line">588</div><div class="line">589</div><div class="line">590</div><div class="line">591</div><div class="line">592</div><div class="line">593</div><div class="line">594</div><div class="line">595</div><div class="line">596</div><div class="line">597</div><div class="line">598</div><div class="line">599</div><div class="line">600</div><div class="line">601</div><div class="line">602</div><div class="line">603</div><div class="line">604</div><div class="line">605</div><div class="line">606</div><div class="line">607</div><div class="line">608</div><div class="line">609</div><div class="line">610</div><div class="line">611</div><div class="line">612</div><div class="line">613</div><div class="line">614</div><div class="line">615</div><div class="line">616</div><div class="line">617</div><div class="line">618</div><div class="line">619</div><div class="line">620</div><div class="line">621</div><div class="line">622</div><div class="line">623</div><div class="line">624</div><div class="line">625</div><div class="line">626</div><div class="line">627</div><div class="line">628</div><div class="line">629</div><div class="line">630</div><div class="line">631</div><div class="line">632</div><div class="line">633</div><div class="line">634</div><div class="line">635</div><div class="line">636</div><div class="line">637</div><div class="line">638</div><div class="line">639</div><div class="line">640</div><div class="line">641</div><div class="line">642</div><div class="line">643</div><div class="line">644</div><div class="line">645</div><div class="line">646</div><div class="line">647</div><div class="line">648</div><div class="line">649</div><div class="line">650</div><div class="line">651</div><div class="line">652</div><div class="line">653</div><div class="line">654</div><div class="line">655</div><div class="line">656</div><div class="line">657</div><div class="line">658</div><div class="line">659</div><div class="line">660</div><div class="line">661</div><div class="line">662</div><div class="line">663</div><div class="line">664</div><div class="line">665</div><div class="line">666</div><div class="line">667</div><div class="line">668</div><div class="line">669</div><div class="line">670</div><div class="line">671</div><div class="line">672</div><div class="line">673</div><div class="line">674</div><div class="line">675</div><div class="line">676</div><div class="line">677</div><div class="line">678</div><div class="line">679</div><div class="line">680</div><div class="line">681</div><div class="line">682</div><div class="line">683</div><div class="line">684</div><div class="line">685</div><div class="line">686</div><div class="line">687</div><div class="line">688</div><div class="line">689</div><div class="line">690</div><div class="line">691</div><div class="line">692</div><div class="line">693</div><div class="line">694</div><div class="line">695</div><div class="line">696</div><div class="line">697</div><div class="line">698</div><div class="line">699</div><div class="line">700</div><div class="line">701</div><div class="line">702</div><div class="line">703</div><div class="line">704</div><div class="line">705</div><div class="line">706</div><div class="line">707</div><div class="line">708</div><div class="line">709</div><div class="line">710</div><div class="line">711</div><div class="line">712</div><div class="line">713</div><div class="line">714</div><div class="line">715</div><div class="line">716</div><div class="line">717</div><div class="line">718</div><div class="line">719</div><div class="line">720</div><div class="line">721</div><div class="line">722</div><div class="line">723</div><div class="line">724</div><div class="line">725</div><div class="line">726</div><div class="line">727</div><div class="line">728</div><div class="line">729</div><div class="line">730</div><div class="line">731</div><div class="line">732</div><div class="line">733</div><div class="line">734</div><div class="line">735</div><div class="line">736</div><div class="line">737</div><div class="line">738</div><div class="line">739</div><div class="line">740</div><div class="line">741</div><div class="line">742</div><div class="line">743</div><div class="line">744</div><div class="line">745</div><div class="line">746</div><div class="line">747</div><div class="line">748</div><div class="line">749</div><div class="line">750</div><div class="line">751</div><div class="line">752</div><div class="line">753</div><div class="line">754</div><div class="line">755</div><div class="line">756</div><div class="line">757</div><div class="line">758</div><div class="line">759</div><div class="line">760</div><div class="line">761</div><div class="line">762</div><div class="line">763</div><div class="line">764</div><div class="line">765</div><div class="line">766</div><div class="line">767</div><div class="line">768</div><div class="line">769</div><div class="line">770</div><div class="line">771</div><div class="line">772</div><div class="line">773</div><div class="line">774</div><div class="line">775</div><div class="line">776</div><div class="line">777</div><div class="line">778</div><div class="line">779</div><div class="line">780</div><div class="line">781</div><div class="line">782</div><div class="line">783</div><div class="line">784</div><div class="line">785</div><div class="line">786</div><div class="line">787</div><div class="line">788</div><div class="line">789</div><div class="line">790</div><div class="line">791</div><div class="line">792</div><div class="line">793</div><div class="line">794</div><div class="line">795</div><div class="line">796</div><div class="line">797</div><div class="line">798</div><div class="line">799</div><div class="line">800</div><div class="line">801</div><div class="line">802</div><div class="line">803</div><div class="line">804</div><div class="line">805</div><div class="line">806</div><div class="line">807</div><div class="line">808</div><div class="line">809</div><div class="line">810</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Theme Core Configuration Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Set to true, if you want to fully override the default configuration.</span></div><div class="line"><span class="comment"># Useful if you don't want to inherit the theme _config.yml configurations.</span></div><div class="line"><span class="attr">override:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Site Information Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># To get or check favicons visit: https://realfavicongenerator.net</span></div><div class="line"><span class="comment"># Put your favicons into `hexo-site/source/` (recommend) or `hexo-site/themes/next/source/images/` directory.</span></div><div class="line"></div><div class="line"><span class="comment"># Default NexT favicons placed in `hexo-site/themes/next/source/images/` directory.</span></div><div class="line"><span class="comment"># And if you want to place your icons in `hexo-site/source/` root directory, you must remove `/images` prefix from pathes.</span></div><div class="line"></div><div class="line"><span class="comment"># For example, you put your favicons into `hexo-site/source/images` directory.</span></div><div class="line"><span class="comment"># Then need to rename &amp; redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.</span></div><div class="line"><span class="attr">favicon:</span></div><div class="line"><span class="attr">  small:</span> <span class="string">/images/favicon-16x16-next.png</span></div><div class="line"><span class="attr">  medium:</span> <span class="string">/images/favicon-32x32-next.png</span></div><div class="line"><span class="attr">  apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></div><div class="line"><span class="attr">  safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></div><div class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></div><div class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></div><div class="line"></div><div class="line"><span class="comment"># Set default keywords (Use a comma to separate)</span></div><div class="line"><span class="attr">keywords:</span> <span class="string">"Hexo, NexT"</span></div><div class="line"></div><div class="line"><span class="comment"># Set rss to false to disable feed link.</span></div><div class="line"><span class="comment"># Leave rss as empty to use site's feed link.</span></div><div class="line"><span class="comment"># Set rss to specific value if you have burned your feed already.</span></div><div class="line"><span class="attr">rss:</span></div><div class="line"></div><div class="line"><span class="attr">footer:</span></div><div class="line">  <span class="comment"># Specify the date when the site was setup.</span></div><div class="line">  <span class="comment"># If not defined, current year will be used.</span></div><div class="line">  <span class="comment">#since: 2015</span></div><div class="line"></div><div class="line">  <span class="comment"># Icon between year and copyright info.</span></div><div class="line"><span class="attr">  icon:</span> <span class="string">user</span></div><div class="line"></div><div class="line">  <span class="comment"># If not defined, will be used `author` from Hexo main config.</span></div><div class="line"><span class="attr">  copyright:</span></div><div class="line">  <span class="comment"># -------------------------------------------------------------</span></div><div class="line">  <span class="comment"># Hexo link (Powered by Hexo).</span></div><div class="line"><span class="attr">  powered:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="attr">  theme:</span></div><div class="line">    <span class="comment"># Theme &amp; scheme info link (Theme - NexT.scheme).</span></div><div class="line"><span class="attr">    enable:</span> <span class="literal">true</span></div><div class="line">    <span class="comment"># Version info of NexT after scheme info (vX.X.X).</span></div><div class="line"><span class="attr">    version:</span> <span class="literal">true</span></div><div class="line">  <span class="comment"># -------------------------------------------------------------</span></div><div class="line">  <span class="comment"># Any custom text can be defined here.</span></div><div class="line">  <span class="comment">#custom_text: Hosted by &lt;a target="_blank" href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt;</span></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># SEO Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Canonical, set a canonical link tag in your hexo, you could use it for your SEO of blog.</span></div><div class="line"><span class="comment"># See: https://support.google.com/webmasters/answer/139066</span></div><div class="line"><span class="comment"># Tips: Before you open this tag, remember set up your URL in hexo _config.yml ( ex. url: http://yourdomain.com )</span></div><div class="line"><span class="attr">canonical:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.</span></div><div class="line"><span class="attr">seo:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># If true, will add site-subtitle to index page, added in main hexo config.</span></div><div class="line"><span class="comment"># subtitle: Subtitle</span></div><div class="line"><span class="attr">index_with_subtitle:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Menu Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -&gt; archives).</span></div><div class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></div><div class="line"><span class="comment"># Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.</span></div><div class="line"><span class="comment"># Value before `||` delimeter is the target link.</span></div><div class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.</span></div><div class="line"><span class="attr">menu:</span></div><div class="line"><span class="attr">  home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></div><div class="line"><span class="attr">  about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></div><div class="line"><span class="attr">  schedule:</span> <span class="string">/schedule/</span> <span class="string">||</span> <span class="string">calendar</span></div><div class="line"><span class="attr">  sitemap:</span> <span class="string">/sitemap.xml</span> <span class="string">||</span> <span class="string">sitemap</span></div><div class="line"><span class="attr">  commonweal:</span> <span class="string">/404/</span> <span class="string">||</span> <span class="string">heartbeat</span></div><div class="line"></div><div class="line"><span class="comment"># Enable/Disable menu icons.</span></div><div class="line"><span class="attr">menu_icons:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  home:</span> <span class="string">home</span></div><div class="line"><span class="attr">  about:</span> <span class="string">user</span></div><div class="line"><span class="attr">  categories:</span> <span class="string">th</span></div><div class="line"><span class="attr">  tags:</span> <span class="string">tags</span></div><div class="line"><span class="attr">  archives:</span> <span class="string">archive</span></div><div class="line"><span class="attr">  commonweal:</span> <span class="string">heartbeat</span></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Scheme Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Schemes</span></div><div class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></div><div class="line"><span class="comment">#scheme: Mist</span></div><div class="line"><span class="comment">#scheme: Pisces</span></div><div class="line"><span class="comment">#scheme: Gemini</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Sidebar Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Social Links.</span></div><div class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></div><div class="line"><span class="comment"># Key is the link label showing to end users.</span></div><div class="line"><span class="comment"># Value before `||` delimeter is the target permalink.</span></div><div class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</span></div><div class="line"><span class="attr">social:</span></div><div class="line"><span class="attr">  GitHub:</span> <span class="attr">https://github.com/KatherineJY</span> <span class="string">||</span> <span class="string">github</span></div><div class="line"><span class="attr">  E-Mail:</span> <span class="attr">mailto:kellymayliu@163.com</span> <span class="string">||</span> <span class="string">envelope</span></div><div class="line">  <span class="comment">#Google: https://plus.google.com/yourname || google</span></div><div class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || twitter</span></div><div class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || facebook</span></div><div class="line">  <span class="comment">#VK Group: https://vk.com/yourname || vk</span></div><div class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span></div><div class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || youtube</span></div><div class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || instagram</span></div><div class="line">  <span class="comment">#Skype: skype:yourname?call|chat || skype</span></div><div class="line"></div><div class="line"><span class="attr">social_icons:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  icons_only:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  transition:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Blog rolls</span></div><div class="line"><span class="attr">links_icon:</span> <span class="string">link</span></div><div class="line"><span class="attr">links_title:</span> <span class="string">Links</span></div><div class="line"><span class="attr">links_layout:</span> <span class="string">block</span></div><div class="line"><span class="comment">#links_layout: inline</span></div><div class="line"><span class="comment">#links:</span></div><div class="line">  <span class="comment">#Title: http://example.com/</span></div><div class="line"></div><div class="line"><span class="comment"># Sidebar Avatar</span></div><div class="line"><span class="comment"># in theme directory(source/images): /images/avatar.gif</span></div><div class="line"><span class="comment"># in site  directory(source/uploads): /uploads/avatar.gif</span></div><div class="line"><span class="attr">avatar:</span> <span class="string">/images/avatar.JPG</span></div><div class="line"></div><div class="line"><span class="comment"># Table Of Contents in the Sidebar</span></div><div class="line"><span class="attr">toc:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"></div><div class="line">  <span class="comment"># Automatically add list number to toc.</span></div><div class="line"><span class="attr">  number:</span> <span class="literal">true</span></div><div class="line"></div><div class="line">  <span class="comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span></div><div class="line"><span class="attr">  wrap:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Creative Commons 4.0 International License.</span></div><div class="line"><span class="comment"># http://creativecommons.org/</span></div><div class="line"><span class="comment"># Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero</span></div><div class="line"><span class="comment">#creative_commons: by-nc-sa</span></div><div class="line"><span class="comment">#creative_commons:</span></div><div class="line"></div><div class="line"><span class="attr">sidebar:</span></div><div class="line">  <span class="comment"># Sidebar Position, available value: left | right (only for Pisces | Gemini).</span></div><div class="line"><span class="attr">  position:</span> <span class="string">left</span></div><div class="line">  <span class="comment">#position: right</span></div><div class="line"></div><div class="line">  <span class="comment"># Sidebar Display, available value (only for Muse | Mist):</span></div><div class="line">  <span class="comment">#  - post    expand on posts automatically. Default.</span></div><div class="line">  <span class="comment">#  - always  expand for all pages automatically</span></div><div class="line">  <span class="comment">#  - hide    expand only when click on the sidebar toggle icon.</span></div><div class="line">  <span class="comment">#  - remove  Totally remove sidebar including sidebar toggle.</span></div><div class="line"><span class="attr">  display:</span> <span class="string">post</span></div><div class="line">  <span class="comment">#display: always</span></div><div class="line">  <span class="comment">#display: hide</span></div><div class="line">  <span class="comment">#display: remove</span></div><div class="line"></div><div class="line">  <span class="comment"># Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span></div><div class="line"><span class="attr">  offset:</span> <span class="number">12</span></div><div class="line"></div><div class="line">  <span class="comment"># Back to top in sidebar (only for Pisces | Gemini).</span></div><div class="line"><span class="attr">  b2t:</span> <span class="literal">false</span></div><div class="line"></div><div class="line">  <span class="comment"># Scroll percent label in b2t button.</span></div><div class="line"><span class="attr">  scrollpercent:</span> <span class="literal">false</span></div><div class="line"></div><div class="line">  <span class="comment"># Enable sidebar on narrow view (only for Muse | Mist).</span></div><div class="line"><span class="attr">  onmobile:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Post Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Automatically scroll page to section which is under &lt;!-- more --&gt; mark.</span></div><div class="line"><span class="attr">scroll_to_more:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Automatically saving scroll position on each post/page in cookies.</span></div><div class="line"><span class="attr">save_scroll:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Automatically excerpt description in homepage as preamble text.</span></div><div class="line"><span class="attr">excerpt_description:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Automatically Excerpt. Not recommend.</span></div><div class="line"><span class="comment"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</span></div><div class="line"><span class="attr">auto_excerpt:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  length:</span> <span class="number">150</span></div><div class="line"></div><div class="line"><span class="comment"># Post meta display settings</span></div><div class="line"><span class="attr">post_meta:</span></div><div class="line"><span class="attr">  item_text:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  created_at:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  updated_at:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  categories:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Post wordcount display settings</span></div><div class="line"><span class="comment"># Dependencies: https://github.com/willin/hexo-wordcount</span></div><div class="line"><span class="attr">post_wordcount:</span></div><div class="line"><span class="attr">  item_text:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  wordcount:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  min2read:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  totalcount:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  separated_meta:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Wechat Subscriber</span></div><div class="line"><span class="comment">#wechat_subscriber:</span></div><div class="line">  <span class="comment">#enabled: true</span></div><div class="line">  <span class="comment">#qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg</span></div><div class="line">  <span class="comment">#description: ex. subscribe to my blog by scanning my public wechat account</span></div><div class="line"></div><div class="line"><span class="comment"># Reward</span></div><div class="line"><span class="comment">#reward_comment: Donate comment here</span></div><div class="line"><span class="comment">#wechatpay: /images/wechatpay.jpg</span></div><div class="line"><span class="comment">#alipay: /images/alipay.jpg</span></div><div class="line"><span class="comment">#bitcoin: /images/bitcoin.png</span></div><div class="line"></div><div class="line"><span class="comment"># Declare license on posts</span></div><div class="line"><span class="attr">post_copyright:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  license:</span> <span class="string">CC</span> <span class="string">BY-NC-SA</span> <span class="number">3.0</span></div><div class="line"><span class="attr">  license_url:</span> <span class="attr">https://creativecommons.org/licenses/by-nc-sa/3.0/</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Misc Theme Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Reduce padding / margin indents on devices with narrow width.</span></div><div class="line"><span class="attr">mobile_layout_economy:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Android Chrome header panel color ($black-deep).</span></div><div class="line"><span class="attr">android_chrome_color:</span> <span class="string">"#222"</span></div><div class="line"></div><div class="line"><span class="comment"># Custom Logo.</span></div><div class="line"><span class="comment"># !!Only available for Default Scheme currently.</span></div><div class="line"><span class="comment"># Options:</span></div><div class="line"><span class="comment">#   enabled: [true/false] - Replace with specific image</span></div><div class="line"><span class="comment">#   image: url-of-image   - Images's url</span></div><div class="line"><span class="attr">custom_logo:</span></div><div class="line"><span class="attr">  enabled:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  image:</span></div><div class="line"></div><div class="line"><span class="comment"># Code Highlight theme</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    normal | night | night eighties | night blue | night bright</span></div><div class="line"><span class="comment"># https://github.com/chriskempson/tomorrow-theme</span></div><div class="line"><span class="attr">highlight_theme:</span> <span class="string">normal</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Font Settings</span></div><div class="line"><span class="comment"># - Find fonts on Google Fonts (https://www.google.com/fonts)</span></div><div class="line"><span class="comment"># - All fonts set here will have the following styles:</span></div><div class="line"><span class="comment">#     light, light italic, normal, normal italic, bold, bold italic</span></div><div class="line"><span class="comment"># - Be aware that setting too much fonts will cause site running slowly</span></div><div class="line"><span class="comment"># - Introduce in 5.0.1</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># CAUTION! Safari Version 10.1.2 <span class="doctag">bug:</span> https://github.com/iissnan/hexo-theme-next/issues/1844</span></div><div class="line"><span class="comment"># To avoid space between header and sidebar in Pisces / Gemini themes recommended to use Web Safe fonts for `global` (and `logo`):</span></div><div class="line"><span class="comment"># Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="attr">font:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"></div><div class="line">  <span class="comment"># Uri of fonts host. E.g. //fonts.googleapis.com (Default).</span></div><div class="line"><span class="attr">  host:</span></div><div class="line"></div><div class="line">  <span class="comment"># Font options:</span></div><div class="line">  <span class="comment"># `external: true` will load this font family from `host` above.</span></div><div class="line">  <span class="comment"># `family: Times New Roman`. Without any quotes.</span></div><div class="line">  <span class="comment"># `size: xx`. Use `px` as unit.</span></div><div class="line"></div><div class="line">  <span class="comment"># Global font settings used on &lt;body&gt; element.</span></div><div class="line"><span class="attr">  global:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span> <span class="string">Lato</span></div><div class="line"><span class="attr">    size:</span></div><div class="line"></div><div class="line">  <span class="comment"># Font settings for Headlines (h1, h2, h3, h4, h5, h6).</span></div><div class="line">  <span class="comment"># Fallback to `global` font settings.</span></div><div class="line"><span class="attr">  headings:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"><span class="attr">    size:</span></div><div class="line"></div><div class="line">  <span class="comment"># Font settings for posts.</span></div><div class="line">  <span class="comment"># Fallback to `global` font settings.</span></div><div class="line"><span class="attr">  posts:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"></div><div class="line">  <span class="comment"># Font settings for Logo.</span></div><div class="line">  <span class="comment"># Fallback to `global` font settings.</span></div><div class="line"><span class="attr">  logo:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"><span class="attr">    size:</span></div><div class="line"></div><div class="line">  <span class="comment"># Font settings for &lt;code&gt; and code blocks.</span></div><div class="line"><span class="attr">  codes:</span></div><div class="line"><span class="attr">    external:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    family:</span></div><div class="line"><span class="attr">    size:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Third Party Services Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># MathJax Support</span></div><div class="line"><span class="attr">mathjax:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  per_page:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  cdn:</span> <span class="string">//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML</span></div><div class="line"></div><div class="line"><span class="comment"># Han Support docs: https://hanzi.pro/</span></div><div class="line"><span class="attr">han:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Swiftype Search API Key</span></div><div class="line"><span class="comment">#swiftype_key:</span></div><div class="line"></div><div class="line"><span class="comment"># Baidu Analytics ID</span></div><div class="line"><span class="comment">#baidu_analytics:</span></div><div class="line"></div><div class="line"><span class="comment"># Duoshuo ShortName</span></div><div class="line"><span class="comment">#duoshuo_shortname:</span></div><div class="line"></div><div class="line"><span class="comment"># Disqus</span></div><div class="line"><span class="attr">disqus:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  shortname:</span></div><div class="line"><span class="attr">  count:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Hypercomments</span></div><div class="line"><span class="comment">#hypercomments_id:</span></div><div class="line"></div><div class="line"><span class="comment"># changyan</span></div><div class="line"><span class="attr">changyan:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  appid:</span></div><div class="line"><span class="attr">  appkey:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Valine.</span></div><div class="line"><span class="comment"># You can get your appid and appkey from https://leancloud.cn</span></div><div class="line"><span class="comment"># more info please open https://valine.js.org</span></div><div class="line"><span class="attr">valine:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  appid:</span>  <span class="comment"># your leancloud application appid</span></div><div class="line"><span class="attr">  appkey:</span>  <span class="comment"># your leancloud application appkey</span></div><div class="line"><span class="attr">  notify:</span> <span class="literal">false</span> <span class="comment"># mail notifier , https://github.com/xCss/Valine/wiki</span></div><div class="line"><span class="attr">  verify:</span> <span class="literal">false</span> <span class="comment"># Verification code</span></div><div class="line"><span class="attr">  placeholder:</span> <span class="string">Just</span> <span class="string">go</span> <span class="string">go</span> <span class="comment"># comment box placeholder</span></div><div class="line"><span class="attr">  avatar:</span> <span class="string">mm</span> <span class="comment"># gravatar style</span></div><div class="line"><span class="attr">  guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment"># custom comment header</span></div><div class="line"><span class="attr">  pageSize:</span> <span class="number">10</span> <span class="comment"># pagination size</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Support for youyan comments system.</span></div><div class="line"><span class="comment"># You can get your uid from http://www.uyan.cc</span></div><div class="line"><span class="comment">#youyan_uid: your uid</span></div><div class="line"></div><div class="line"><span class="comment"># Support for LiveRe comments system.</span></div><div class="line"><span class="comment"># You can get your uid from https://livere.com/insight/myCode (General web site)</span></div><div class="line"><span class="comment">#livere_uid: your uid</span></div><div class="line"></div><div class="line"><span class="comment"># Gitment</span></div><div class="line"><span class="comment"># Introduction: https://imsun.net/posts/gitment-introduction/</span></div><div class="line"><span class="comment"># You can get your Github ID from https://api.github.com/users/&lt;Github username&gt;</span></div><div class="line"><span class="attr">gitment:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  mint:</span> <span class="literal">true</span> <span class="comment"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span></div><div class="line"><span class="attr">  count:</span> <span class="literal">true</span> <span class="comment"># Show comments count in post meta area</span></div><div class="line"><span class="attr">  lazy:</span> <span class="literal">false</span> <span class="comment"># Comments lazy loading with a button</span></div><div class="line"><span class="attr">  cleanly:</span> <span class="literal">false</span> <span class="comment"># Hide 'Powered by ...' on footer, and more</span></div><div class="line"><span class="attr">  language:</span> <span class="comment"># Force language, or auto switch by theme</span></div><div class="line"><span class="attr">  github_user:</span> <span class="comment"># MUST HAVE, Your Github ID</span></div><div class="line"><span class="attr">  github_repo:</span> <span class="comment"># MUST HAVE, The repo you use to store Gitment comments</span></div><div class="line"><span class="attr">  client_id:</span> <span class="comment"># MUST HAVE, Github client id for the Gitment</span></div><div class="line"><span class="attr">  client_secret:</span> <span class="comment"># EITHER this or proxy_gateway, Github access secret token for the Gitment</span></div><div class="line"><span class="attr">  proxy_gateway:</span> <span class="comment"># Address of api proxy, See: https://github.com/aimingoo/intersect</span></div><div class="line"><span class="attr">  redirect_protocol:</span> <span class="comment"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span></div><div class="line"></div><div class="line"><span class="comment"># Baidu Share</span></div><div class="line"><span class="comment"># Available value:</span></div><div class="line"><span class="comment">#    button | slide</span></div><div class="line"><span class="comment"># Warning: Baidu Share does not support https.</span></div><div class="line"><span class="comment">#baidushare:</span></div><div class="line"><span class="comment">##  type: button</span></div><div class="line"></div><div class="line"><span class="comment"># Share</span></div><div class="line"><span class="comment"># This plugin is more useful in China, make sure you known how to use it.</span></div><div class="line"><span class="comment"># And you can find the use guide at official webiste: http://www.jiathis.com/.</span></div><div class="line"><span class="comment"># Warning: JiaThis does not support https.</span></div><div class="line"><span class="comment">#jiathis:</span></div><div class="line">  <span class="comment">##uid: Get this uid from http://www.jiathis.com/</span></div><div class="line"><span class="comment">#add_this_id:</span></div><div class="line"></div><div class="line"><span class="comment"># Share</span></div><div class="line"><span class="comment">#duoshuo_share: true</span></div><div class="line"></div><div class="line"><span class="comment"># NeedMoreShare2</span></div><div class="line"><span class="comment"># This plugin is a pure javascript sharing lib which is useful in China.</span></div><div class="line"><span class="comment"># See: https://github.com/revir/need-more-share2</span></div><div class="line"><span class="comment"># Also see: https://github.com/DzmVasileusky/needShareButton</span></div><div class="line"><span class="comment"># iconStyle: default | box</span></div><div class="line"><span class="comment"># boxForm: horizontal | vertical</span></div><div class="line"><span class="comment"># position: top / middle / bottom + Left / Center / Right</span></div><div class="line"><span class="comment"># networks: Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,</span></div><div class="line"><span class="comment">#           Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,</span></div><div class="line"><span class="comment">#           Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,</span></div><div class="line"><span class="comment">#           Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru</span></div><div class="line"><span class="attr">needmoreshare2:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  postbottom:</span></div><div class="line"><span class="attr">    enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">    options:</span></div><div class="line"><span class="attr">      iconStyle:</span> <span class="string">box</span></div><div class="line"><span class="attr">      boxForm:</span> <span class="string">horizontal</span></div><div class="line"><span class="attr">      position:</span> <span class="string">bottomCenter</span></div><div class="line"><span class="attr">      networks:</span> <span class="string">Weibo,Wechat,Douban,QQZone,Twitter,Facebook</span></div><div class="line"><span class="attr">  float:</span></div><div class="line"><span class="attr">    enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">    options:</span></div><div class="line"><span class="attr">      iconStyle:</span> <span class="string">box</span></div><div class="line"><span class="attr">      boxForm:</span> <span class="string">horizontal</span></div><div class="line"><span class="attr">      position:</span> <span class="string">middleRight</span></div><div class="line"><span class="attr">      networks:</span> <span class="string">Weibo,Wechat,Douban,QQZone,Twitter,Facebook</span></div><div class="line"></div><div class="line"><span class="comment"># Google Webmaster tools verification setting</span></div><div class="line"><span class="comment"># See: https://www.google.com/webmasters/</span></div><div class="line"><span class="comment">#google_site_verification:</span></div><div class="line"></div><div class="line"><span class="comment"># Google Analytics</span></div><div class="line"><span class="comment">#google_analytics:</span></div><div class="line"></div><div class="line"><span class="comment"># Bing Webmaster tools verification setting</span></div><div class="line"><span class="comment"># See: https://www.bing.com/webmaster/</span></div><div class="line"><span class="comment">#bing_site_verification:</span></div><div class="line"></div><div class="line"><span class="comment"># Yandex Webmaster tools verification setting</span></div><div class="line"><span class="comment"># See: https://webmaster.yandex.ru/</span></div><div class="line"><span class="comment">#yandex_site_verification:</span></div><div class="line"></div><div class="line"><span class="comment"># CNZZ count</span></div><div class="line"><span class="comment">#cnzz_siteid:</span></div><div class="line"></div><div class="line"><span class="comment"># Application Insights</span></div><div class="line"><span class="comment"># See https://azure.microsoft.com/en-us/services/application-insights/</span></div><div class="line"><span class="comment"># application_insights:</span></div><div class="line"></div><div class="line"><span class="comment"># Make duoshuo show UA</span></div><div class="line"><span class="comment"># user_id must NOT be null when admin_enable is true!</span></div><div class="line"><span class="comment"># you can visit http://dev.duoshuo.com get duoshuo user id.</span></div><div class="line"><span class="attr">duoshuo_info:</span></div><div class="line"><span class="attr">  ua_enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  admin_enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  user_id:</span> <span class="number">0</span></div><div class="line">  <span class="comment">#admin_nickname: Author</span></div><div class="line"></div><div class="line"><span class="comment"># Post widgets &amp; FB/VK comments settings.</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Facebook SDK Support.</span></div><div class="line"><span class="comment"># https://github.com/iissnan/hexo-theme-next/pull/410</span></div><div class="line"><span class="attr">facebook_sdk:</span></div><div class="line"><span class="attr">  enable:</span>       <span class="literal">false</span></div><div class="line"><span class="attr">  app_id:</span>       <span class="comment">#&lt;app_id&gt;</span></div><div class="line"><span class="attr">  fb_admin:</span>     <span class="comment">#&lt;user_id&gt;</span></div><div class="line"><span class="attr">  like_button:</span>  <span class="comment">#true</span></div><div class="line"><span class="attr">  webmaster:</span>    <span class="comment">#true</span></div><div class="line"></div><div class="line"><span class="comment"># Facebook comments plugin</span></div><div class="line"><span class="comment"># This plugin depends on Facebook SDK.</span></div><div class="line"><span class="comment"># If facebook_sdk.enable is false, Facebook comments plugin is unavailable.</span></div><div class="line"><span class="attr">facebook_comments_plugin:</span></div><div class="line"><span class="attr">  enable:</span>       <span class="literal">false</span></div><div class="line"><span class="attr">  num_of_posts:</span> <span class="number">10</span>    <span class="comment"># min posts num is 1</span></div><div class="line"><span class="attr">  width:</span>        <span class="number">100</span><span class="string">%</span>  <span class="comment"># default width is 550px</span></div><div class="line"><span class="attr">  scheme:</span>       <span class="string">light</span> <span class="comment"># default scheme is light (light or dark)</span></div><div class="line"></div><div class="line"><span class="comment"># VKontakte API Support.</span></div><div class="line"><span class="comment"># To get your AppID visit https://vk.com/editapp?act=create</span></div><div class="line"><span class="attr">vkontakte_api:</span></div><div class="line"><span class="attr">  enable:</span>       <span class="literal">false</span></div><div class="line"><span class="attr">  app_id:</span>       <span class="comment">#&lt;app_id&gt;</span></div><div class="line"><span class="attr">  like:</span>         <span class="literal">true</span></div><div class="line"><span class="attr">  comments:</span>     <span class="literal">true</span></div><div class="line"><span class="attr">  num_of_posts:</span> <span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment"># Star rating support to each article.</span></div><div class="line"><span class="comment"># To get your ID visit https://widgetpack.com</span></div><div class="line"><span class="attr">rating:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  id:</span>     <span class="comment">#&lt;app_id&gt;</span></div><div class="line"><span class="attr">  color:</span>  <span class="string">fc6423</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Show number of visitors to each article.</span></div><div class="line"><span class="comment"># You can visit https://leancloud.cn get AppID and AppKey.</span></div><div class="line"><span class="attr">leancloud_visitors:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  app_id:</span> <span class="comment">#&lt;app_id&gt;</span></div><div class="line"><span class="attr">  app_key:</span> <span class="comment">#&lt;app_key&gt;</span></div><div class="line"></div><div class="line"><span class="comment"># Another tool to show number of visitors to each article.</span></div><div class="line"><span class="comment"># visit https://console.firebase.google.com/u/0/ to get apiKey and projectId</span></div><div class="line"><span class="comment"># visit https://firebase.google.com/docs/firestore/ to get more information about firestore</span></div><div class="line"><span class="attr">firestore:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  collection:</span> <span class="string">articles</span> <span class="comment">#required, a string collection name to access firestore database</span></div><div class="line"><span class="attr">  apiKey:</span> <span class="comment">#required</span></div><div class="line"><span class="attr">  projectId:</span> <span class="comment">#required</span></div><div class="line"><span class="attr">  bluebird:</span> <span class="literal">false</span> <span class="comment">#enable this if you want to include bluebird 3.5.1(core version) Promise polyfill</span></div><div class="line"></div><div class="line"><span class="comment"># Show PV/UV of the website/page with busuanzi.</span></div><div class="line"><span class="comment"># Get more information on http://ibruce.info/2015/04/04/busuanzi/</span></div><div class="line"><span class="attr">busuanzi_count:</span></div><div class="line">  <span class="comment"># count values only if the other configs are false</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line">  <span class="comment"># custom uv span for the whole site</span></div><div class="line"><span class="attr">  site_uv:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  site_uv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-user"&gt;&lt;/i&gt;</span></div><div class="line"><span class="attr">  site_uv_footer:</span></div><div class="line">  <span class="comment"># custom pv span for the whole site</span></div><div class="line"><span class="attr">  site_pv:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  site_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-eye"&gt;&lt;/i&gt;</span></div><div class="line"><span class="attr">  site_pv_footer:</span></div><div class="line">  <span class="comment"># custom pv span for one page only</span></div><div class="line"><span class="attr">  page_pv:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  page_pv_header:</span> <span class="string">&lt;i</span> <span class="string">class="fa</span> <span class="string">fa-file-o"&gt;&lt;/i&gt;</span></div><div class="line"><span class="attr">  page_pv_footer:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Tencent analytics ID</span></div><div class="line"><span class="comment"># tencent_analytics:</span></div><div class="line"></div><div class="line"><span class="comment"># Tencent MTA ID</span></div><div class="line"><span class="comment"># tencent_mta:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO</span></div><div class="line"><span class="attr">baidu_push:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Google Calendar</span></div><div class="line"><span class="comment"># Share your recent schedule to others via calendar page</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># API Documentation:</span></div><div class="line"><span class="comment"># https://developers.google.com/google-apps/calendar/v3/reference/events/list</span></div><div class="line"><span class="attr">calendar:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  calendar_id:</span> <span class="string">&lt;required&gt;</span></div><div class="line"><span class="attr">  api_key:</span> <span class="string">&lt;required&gt;</span></div><div class="line"><span class="attr">  orderBy:</span> <span class="string">startTime</span></div><div class="line"><span class="attr">  offsetMax:</span> <span class="number">24</span></div><div class="line"><span class="attr">  offsetMin:</span> <span class="number">4</span></div><div class="line"><span class="attr">  timeZone:</span></div><div class="line"><span class="attr">  showDeleted:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  singleEvents:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  maxResults:</span> <span class="number">250</span></div><div class="line"></div><div class="line"><span class="comment"># Algolia Search</span></div><div class="line"><span class="attr">algolia_search:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  hits:</span></div><div class="line"><span class="attr">    per_page:</span> <span class="number">10</span></div><div class="line"><span class="attr">  labels:</span></div><div class="line"><span class="attr">    input_placeholder:</span> <span class="string">Search</span> <span class="string">for</span> <span class="string">Posts</span></div><div class="line"><span class="attr">    hits_empty:</span> <span class="string">"We didn't find any results for the search: $&#123;query&#125;"</span></div><div class="line"><span class="attr">    hits_stats:</span> <span class="string">"$&#123;hits&#125; results found in $&#123;time&#125; ms"</span></div><div class="line"></div><div class="line"><span class="comment"># Local search</span></div><div class="line"><span class="comment"># Dependencies: https://github.com/flashlab/hexo-generator-search</span></div><div class="line"><span class="attr">local_search:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line">  <span class="comment"># if auto, trigger search by changing input</span></div><div class="line">  <span class="comment"># if manual, trigger search by pressing enter key or search button</span></div><div class="line"><span class="attr">  trigger:</span> <span class="string">auto</span></div><div class="line">  <span class="comment"># show top n results per article, show all results by setting to -1</span></div><div class="line"><span class="attr">  top_n_per_article:</span> <span class="number">1</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"><span class="comment"># Tags Settings</span></div><div class="line"><span class="comment"># ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># External URL with BASE64 encrypt &amp; decrypt.</span></div><div class="line"><span class="comment"># Usage: &#123;% exturl text url "title" %&#125;</span></div><div class="line"><span class="comment"># Alias: &#123;% extlink text url "title" %&#125;</span></div><div class="line"><span class="attr">exturl:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Note tag (bs-callout).</span></div><div class="line"><span class="attr">note:</span></div><div class="line">  <span class="comment"># Note tag style values:</span></div><div class="line">  <span class="comment">#  - simple    bs-callout old alert style. Default.</span></div><div class="line">  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span></div><div class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></div><div class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></div><div class="line"><span class="attr">  style:</span> <span class="string">simple</span></div><div class="line"><span class="attr">  icons:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  border_radius:</span> <span class="number">3</span></div><div class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></div><div class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></div><div class="line"><span class="attr">  light_bg_offset:</span> <span class="number">0</span></div><div class="line"></div><div class="line"><span class="comment"># Label tag.</span></div><div class="line"><span class="attr">label:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Tabs tag.</span></div><div class="line"><span class="attr">tabs:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  transition:</span></div><div class="line"><span class="attr">    tabs:</span> <span class="literal">false</span></div><div class="line"><span class="attr">    labels:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  border_radius:</span> <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#! ---------------------------------------------------------------</span></div><div class="line"><span class="comment">#! DO NOT EDIT THE FOLLOWING SETTINGS</span></div><div class="line"><span class="comment">#! UNLESS YOU KNOW WHAT YOU ARE DOING</span></div><div class="line"><span class="comment">#! ---------------------------------------------------------------</span></div><div class="line"></div><div class="line"><span class="comment"># Use velocity to animate everything.</span></div><div class="line"><span class="attr">motion:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  async:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  transition:</span></div><div class="line">    <span class="comment"># Transition variants:</span></div><div class="line">    <span class="comment"># fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut</span></div><div class="line">    <span class="comment"># swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut</span></div><div class="line">    <span class="comment"># bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut</span></div><div class="line">    <span class="comment"># slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut</span></div><div class="line">    <span class="comment"># slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut</span></div><div class="line">    <span class="comment"># perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut</span></div><div class="line"><span class="attr">    post_block:</span> <span class="string">fadeIn</span></div><div class="line"><span class="attr">    post_header:</span> <span class="string">slideDownIn</span></div><div class="line"><span class="attr">    post_body:</span> <span class="string">slideDownIn</span></div><div class="line"><span class="attr">    coll_header:</span> <span class="string">slideLeftIn</span></div><div class="line">    <span class="comment"># Only for Pisces | Gemini.</span></div><div class="line"><span class="attr">    sidebar:</span> <span class="string">slideUpIn</span></div><div class="line"></div><div class="line"><span class="comment"># Fancybox</span></div><div class="line"><span class="attr">fancybox:</span> <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># Progress bar in the top during page loading.</span></div><div class="line"><span class="attr">pace:</span> <span class="literal">false</span></div><div class="line"><span class="comment"># Themes list:</span></div><div class="line"><span class="comment">#pace-theme-big-counter</span></div><div class="line"><span class="comment">#pace-theme-bounce</span></div><div class="line"><span class="comment">#pace-theme-barber-shop</span></div><div class="line"><span class="comment">#pace-theme-center-atom</span></div><div class="line"><span class="comment">#pace-theme-center-circle</span></div><div class="line"><span class="comment">#pace-theme-center-radar</span></div><div class="line"><span class="comment">#pace-theme-center-simple</span></div><div class="line"><span class="comment">#pace-theme-corner-indicator</span></div><div class="line"><span class="comment">#pace-theme-fill-left</span></div><div class="line"><span class="comment">#pace-theme-flash</span></div><div class="line"><span class="comment">#pace-theme-loading-bar</span></div><div class="line"><span class="comment">#pace-theme-mac-osx</span></div><div class="line"><span class="comment">#pace-theme-minimal</span></div><div class="line"><span class="comment"># For example</span></div><div class="line"><span class="comment"># pace_theme: pace-theme-center-simple</span></div><div class="line"><span class="attr">pace_theme:</span> <span class="string">pace-theme-minimal</span></div><div class="line"></div><div class="line"><span class="comment"># Canvas-nest</span></div><div class="line"><span class="attr">canvas_nest:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># three_waves</span></div><div class="line"><span class="attr">three_waves:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># canvas_lines</span></div><div class="line"><span class="attr">canvas_lines:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># canvas_sphere</span></div><div class="line"><span class="attr">canvas_sphere:</span> <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment"># Only fit scheme Pisces</span></div><div class="line"><span class="comment"># Canvas-ribbon</span></div><div class="line"><span class="comment"># size: The width of the ribbon.</span></div><div class="line"><span class="comment"># alpha: The transparency of the ribbon.</span></div><div class="line"><span class="comment"># zIndex: The display level of the ribbon.</span></div><div class="line"><span class="attr">canvas_ribbon:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  size:</span> <span class="number">300</span></div><div class="line"><span class="attr">  alpha:</span> <span class="number">0.6</span></div><div class="line"><span class="attr">  zIndex:</span> <span class="bullet">-1</span></div><div class="line"></div><div class="line"><span class="comment"># Script Vendors.</span></div><div class="line"><span class="comment"># Set a CDN address for the vendor you want to customize.</span></div><div class="line"><span class="comment"># For example</span></div><div class="line"><span class="comment">#    jquery: https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js</span></div><div class="line"><span class="comment"># Be aware that you should use the same version as internal ones to avoid potential problems.</span></div><div class="line"><span class="comment"># Please use the https protocol of CDN files when you enable https on your site.</span></div><div class="line"><span class="attr">vendors:</span></div><div class="line">  <span class="comment"># Internal path prefix. Please do not edit it.</span></div><div class="line"><span class="attr">  _internal:</span> <span class="string">lib</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 2.1.3</span></div><div class="line"><span class="attr">  jquery:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 2.1.5</span></div><div class="line">  <span class="comment"># See: http://fancyapps.com/fancybox/</span></div><div class="line"><span class="attr">  fancybox:</span></div><div class="line"><span class="attr">  fancybox_css:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.0.6</span></div><div class="line">  <span class="comment"># See: https://github.com/ftlabs/fastclick</span></div><div class="line"><span class="attr">  fastclick:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.9.7</span></div><div class="line">  <span class="comment"># See: https://github.com/tuupola/jquery_lazyload</span></div><div class="line"><span class="attr">  lazyload:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.2.1</span></div><div class="line">  <span class="comment"># See: http://VelocityJS.org</span></div><div class="line"><span class="attr">  velocity:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.2.1</span></div><div class="line">  <span class="comment"># See: http://VelocityJS.org</span></div><div class="line"><span class="attr">  velocity_ui:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 0.7.9</span></div><div class="line">  <span class="comment"># See: https://faisalman.github.io/ua-parser-js/</span></div><div class="line"><span class="attr">  ua_parser:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 4.6.2</span></div><div class="line">  <span class="comment"># See: http://fontawesome.io/</span></div><div class="line"><span class="attr">  fontawesome:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1</span></div><div class="line">  <span class="comment"># https://www.algolia.com</span></div><div class="line"><span class="attr">  algolia_instant_js:</span></div><div class="line"><span class="attr">  algolia_instant_css:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.0.2</span></div><div class="line">  <span class="comment"># See: https://github.com/HubSpot/pace</span></div><div class="line">  <span class="comment"># Or use direct links below:</span></div><div class="line">  <span class="comment"># pace: //cdn.bootcss.com/pace/1.0.2/pace.min.js</span></div><div class="line">  <span class="comment"># pace_css: //cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css</span></div><div class="line"><span class="attr">  pace:</span></div><div class="line"><span class="attr">  pace_css:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.0.0</span></div><div class="line">  <span class="comment"># https://github.com/hustcc/canvas-nest.js</span></div><div class="line"><span class="attr">  canvas_nest:</span></div><div class="line"></div><div class="line">  <span class="comment"># three</span></div><div class="line"><span class="attr">  three:</span></div><div class="line"></div><div class="line">  <span class="comment"># three_waves</span></div><div class="line">  <span class="comment"># https://github.com/jjandxa/three_waves</span></div><div class="line"><span class="attr">  three_waves:</span></div><div class="line"></div><div class="line">  <span class="comment"># three_waves</span></div><div class="line">  <span class="comment"># https://github.com/jjandxa/canvas_lines</span></div><div class="line"><span class="attr">  canvas_lines:</span></div><div class="line"></div><div class="line">  <span class="comment"># three_waves</span></div><div class="line">  <span class="comment"># https://github.com/jjandxa/canvas_sphere</span></div><div class="line"><span class="attr">  canvas_sphere:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 1.0.0</span></div><div class="line">  <span class="comment"># https://github.com/zproo/canvas-ribbon</span></div><div class="line"><span class="attr">  canvas_ribbon:</span></div><div class="line"></div><div class="line">  <span class="comment"># Internal version: 3.3.0</span></div><div class="line">  <span class="comment"># https://github.com/ethantw/Han</span></div><div class="line"><span class="attr">  han:</span></div><div class="line"></div><div class="line">  <span class="comment"># needMoreShare2</span></div><div class="line">  <span class="comment"># https://github.com/revir/need-more-share2</span></div><div class="line"><span class="attr">  needMoreShare2:</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Assets</span></div><div class="line"><span class="attr">css:</span> <span class="string">css</span></div><div class="line"><span class="attr">js:</span> <span class="string">js</span></div><div class="line"><span class="attr">images:</span> <span class="string">images</span></div><div class="line"></div><div class="line"><span class="comment"># Theme version</span></div><div class="line"><span class="attr">version:</span> <span class="number">5.1</span><span class="number">.3</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/vps-ssr/" rel="next" title="vps+ssr">
+                <i class="fa fa-chevron-left"></i> vps+ssr
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/09/javascript-dom/" rel="prev" title="《javascript dom 编程艺术》笔记">
+                《javascript dom 编程艺术》笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="KatherineJY" />
+            
+              <p class="site-author-name" itemprop="name">KatherineJY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KatherineJY" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:kellymayliu@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#我的next主题的配置"><span class="nav-number">1.</span> <span class="nav-text">我的next主题的配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KatherineJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
