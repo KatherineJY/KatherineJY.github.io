@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++,windows编程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="server: 创建管道 -&amp;gt; 等待客户连接 -&amp;gt; 从管道中读取或向其中写入 client：等待服务进程创建特定管道 -&amp;gt; 打开已连接的管道 -&amp;gt; 从管道中读取或向其中写入   管道相关的结构和方法 CreateNamedPipe function">
+<meta name="keywords" content="c++,windows编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程通信1——命名管道">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/process-communicate-1/index.html">
+<meta property="og:site_name" content="KatherineJY">
+<meta property="og:description" content="server: 创建管道 -&amp;gt; 等待客户连接 -&amp;gt; 从管道中读取或向其中写入 client：等待服务进程创建特定管道 -&amp;gt; 打开已连接的管道 -&amp;gt; 从管道中读取或向其中写入   管道相关的结构和方法 CreateNamedPipe function">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-08T19:15:19.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="进程通信1——命名管道">
+<meta name="twitter:description" content="server: 创建管道 -&amp;gt; 等待客户连接 -&amp;gt; 从管道中读取或向其中写入 client：等待服务进程创建特定管道 -&amp;gt; 打开已连接的管道 -&amp;gt; 从管道中读取或向其中写入   管道相关的结构和方法 CreateNamedPipe function">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/process-communicate-1/"/>
+
+
+
+
+
+  <title>进程通信1——命名管道 | KatherineJY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KatherineJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/process-communicate-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">进程通信1——命名管道</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T03:11:02+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>server: 创建管道 -&gt; 等待客户连接 -&gt; 从管道中读取或向其中写入</li>
+<li>client：等待服务进程创建特定管道 -&gt; 打开已连接的管道 -&gt; 从管道中读取或向其中写入</li>
+</ul>
+<hr>
+<h3 id="管道相关的结构和方法"><a href="#管道相关的结构和方法" class="headerlink" title="管道相关的结构和方法"></a>管道相关的结构和方法</h3><ul>
+<li><p>CreateNamedPipe function</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//构造命名管道</span></div><div class="line"><span class="function">HANDLE WINAPI <span class="title">CreateNamedPipe</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_     LPCTSTR               lpName,              <span class="comment">//一个独一无二的管道名,命名格式为\\.\pipe\pipename</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwOpenMode,          <span class="comment">//指定一些标志</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwPipeMode,          <span class="comment">//指定另一些标志 我知道这个解释很敷衍</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 nMaxInstances,       <span class="comment">//表示管道实例的最大数量</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 nOutBufferSize,      <span class="comment">//输出缓存区大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 nInBufferSize,       <span class="comment">//输入缓存区大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 nDefaultTimeOut,     <span class="comment">//默认超时时间，以ms为单位</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPSECURITY_ATTRIBUTES lpSecurityAttributes <span class="comment">//没用到 不清楚</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>CreateFile function</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个文件或I/O设备</span></div><div class="line"><span class="comment">//在这里是用来打开特定的管道</span></div><div class="line"><span class="function">HANDLE WINAPI <span class="title">CreateFile</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_     LPCTSTR               lpFileName,          <span class="comment">//文件或I/O设备名称</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwDesiredAccess,</span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwShareMode,</span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPSECURITY_ATTRIBUTES lpSecurityAttributes,</span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwCreationDisposition,</span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwFlagsAndAttributes,</span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ HANDLE                hTemplateFile</span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ConnectNamedPipe function</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//等待客户连接管道</span></div><div class="line"><span class="function">BOOL WINAPI <span class="title">ConnectNamedPipe</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_        HANDLE       hNamedPipe,            <span class="comment">//等待连接的管道的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">    _Inout_opt_ LPOVERLAPPED lpOverlapped           <span class="comment">//设置为NULL时，将在有客户连接时立即返回</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>WaitNamedPipe function</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//等待特定名称的管道，客户进程用来连接服务进程</span></div><div class="line"><span class="function">BOOL WINAPI <span class="title">WaitNamedPipe</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ LPCTSTR lpNamedPipeName,                   <span class="comment">//等待的管道的名称</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ DWORD   nTimeOut                           <span class="comment">//超时时间。超过时间就不再等待了</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ReadFile function</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从管道里读取数据</span></div><div class="line"><span class="function">BOOL WINAPI <span class="title">ReadFile</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params"> 		_In_        HANDLE       hFile,			<span class="comment">//管道的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">		_Out_       LPVOID       lpBuffer,		<span class="comment">//缓冲区</span></span></span></div><div class="line"><span class="function"><span class="params">		_In_        DWORD        nNumberOfBytesToRead,	<span class="comment">//最大的读取数据的长度，一般就是缓冲区的长度</span></span></span></div><div class="line"><span class="function"><span class="params">		_Out_opt_   LPDWORD      lpNumberOfBytesRead,	<span class="comment">//实际读到的数据长度</span></span></span></div><div class="line"><span class="function"><span class="params"> 		_Inout_opt_ LPOVERLAPPED lpOverlapped    	<span class="comment">//异步读取</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>WriteFile function</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从管道里读取数据</span></div><div class="line"><span class="function">BOOL WINAPI <span class="title">WriteFile</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">		 _In_        HANDLE       hFile,		<span class="comment">//管道的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">		 _In_        LPCVOID      lpBuffer,		<span class="comment">//缓冲区</span></span></span></div><div class="line"><span class="function"><span class="params"> 		_In_        DWORD        nNumberOfBytesToWrite,	<span class="comment">//最大的写入数据的长度，一般就是缓冲区的长度</span></span></span></div><div class="line"><span class="function"><span class="params"> 		_Out_opt_   LPDWORD      lpNumberOfBytesWritten,<span class="comment">//实际写入的数据长度</span></span></span></div><div class="line"><span class="function"><span class="params"> 		_Inout_opt_ LPOVERLAPPED lpOverlapped 	<span class="comment">//异步写入</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>demo<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//server.cpp</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">readFromPipe</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//由服务进程创建管道</span></div><div class="line">	HANDLE hPipe = CreateNamedPipe(</div><div class="line">		TEXT(<span class="string">"\\\\.\\Pipe\\mypipe"</span>),                            <span class="comment">//管道名  </span></div><div class="line">		PIPE_ACCESS_DUPLEX,                                     </div><div class="line">        <span class="comment">//标志是PIPE_ACCESS_DUPLEX时，数据流是双向的。</span></div><div class="line">        <span class="comment">//客户可以指定GENERIC_READ，GENERIC_WRITE，或者两者兼用。</span></div><div class="line">		PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT,  </div><div class="line">        <span class="comment">//PIPE_TYPE_MESSAGE     表示写入管道的数据是按消息写入</span></div><div class="line">        <span class="comment">//PIPE_READMODE_MESSAGE 表示读入管道的数据是按消息读入</span></div><div class="line">        <span class="comment">//PIPE_WAIT             ReadFile时阻塞，异步实现I/O</span></div><div class="line">		PIPE_UNLIMITED_INSTANCES,                           <span class="comment">//按照可用计算机资源来确定 </span></div><div class="line">		<span class="number">0</span>,<span class="number">0</span>,                                                <span class="comment">//输出、输入缓冲区的打下，0表示默认值</span></div><div class="line">		NMPWAIT_WAIT_FOREVER,                               <span class="comment">//永远等候管道可用  </span></div><div class="line">		<span class="literal">NULL</span>);                                               </div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (hPipe == INVALID_HANDLE_VALUE) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Create Pipe Error\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">    <span class="comment">//服务进程创建管道后，等待客户进程连接管道，继而进行通信</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Waing for connection...\n"</span>);</div><div class="line">	<span class="keyword">if</span> (ConnectNamedPipe(hPipe, <span class="literal">NULL</span>) == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Connection faile\n"</span>);</div><div class="line">		CloseHandle(hPipe);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Connection Success!\n"</span>);</div><div class="line">	</div><div class="line">    <span class="keyword">char</span> buf[<span class="number">256</span>] = <span class="string">""</span>;     <span class="comment">//进程内自定义的读入缓冲区</span></div><div class="line">	DWORD rlen = <span class="number">0</span>;         <span class="comment">//读入数据的长度</span></div><div class="line">	<span class="keyword">if</span> (ReadFile(hPipe, buf, <span class="number">256</span>, &amp;rlen, <span class="literal">NULL</span>) == FALSE) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Read Data From Pipe Failed!\n"</span>);</div><div class="line">		CloseHandle(hPipe);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"From Client: data = %s, size = %d\n"</span>, buf, rlen);</div><div class="line">	<span class="keyword">char</span> wbuf[<span class="number">256</span>] = <span class="string">"has received data form client"</span>;<span class="comment">//进程内自定义的输出缓冲区</span></div><div class="line">	DWORD wlen = <span class="number">0</span>;<span class="comment">//写入数据的长度</span></div><div class="line">	WriteFile(hPipe, wbuf, <span class="keyword">sizeof</span>(wbuf), &amp;wlen, <span class="number">0</span>); </div><div class="line">	<span class="built_in">printf</span>(<span class="string">"To Client: data = %s, size = %d\n"</span>, wbuf, wlen);</div><div class="line">	CloseHandle(hPipe);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//client.cpp</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">writeInPipe</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//等待服务进程创建管道并连接</span></div><div class="line">    <span class="comment">//NMPWAIT_WAIT_FOREVER表示永远等候管道可用  </span></div><div class="line">	<span class="keyword">if</span> (!WaitNamedPipe(TEXT(<span class="string">"\\\\.\\Pipe\\mypipe"</span>), NMPWAIT_WAIT_FOREVER);) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"connect the namePipe failed!\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">    <span class="comment">//打开已连接的服务器的管道</span></div><div class="line">	HANDLE hPipe = CreateFile(            </div><div class="line">		TEXT(<span class="string">"\\\\.\\Pipe\\mypipe"</span>),    </div><div class="line">		GENERIC_READ | GENERIC_WRITE, </div><div class="line">		<span class="number">0</span>,                              </div><div class="line">		<span class="literal">NULL</span>,                          </div><div class="line">		OPEN_EXISTING,                  </div><div class="line">		FILE_ATTRIBUTE_NORMAL,         </div><div class="line">		<span class="literal">NULL</span>);                          </div><div class="line">	<span class="keyword">if</span> (INVALID_HANDLE_VALUE == hPipe)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"open the exit pipe failed!\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">        DWORD wlen = <span class="number">0</span>;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">256</span>] = <span class="string">"try to write something in pipe"</span>;</div><div class="line">	<span class="keyword">if</span> (WriteFile(hPipe, buf, <span class="keyword">sizeof</span>(buf), &amp;wlen, <span class="number">0</span>) == FALSE) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"write to pipe failed!\n"</span>);</div><div class="line">		CloseHandle(hPipe);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"To Server: data = %s, size = %d\n"</span>, buf, wlen);</div><div class="line">	<span class="keyword">char</span> rbuf[<span class="number">256</span>] = <span class="string">""</span>;</div><div class="line">	DWORD rlen = <span class="number">0</span>;</div><div class="line">	ReadFile(hPipe, rbuf, <span class="keyword">sizeof</span>(rbuf), &amp;rlen, <span class="number">0</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"From Server: data = %s, size = %d\n"</span>, rbuf, rlen);</div><div class="line">	CloseHandle(hPipe);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/windows编程/" rel="tag"># windows编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/jfilechooser/" rel="next" title="JFileChooser">
+                <i class="fa fa-chevron-left"></i> JFileChooser
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.JPG"
+                alt="KatherineJY" />
+            
+              <p class="site-author-name" itemprop="name">KatherineJY</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/KatherineJY" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:kellymayliu@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#管道相关的结构和方法"><span class="nav-number">1.</span> <span class="nav-text">管道相关的结构和方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KatherineJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
