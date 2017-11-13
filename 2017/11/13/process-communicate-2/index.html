@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="server: 打开一个文件（可以没有这一步） -&amp;gt; 创建一个文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入client: 打开某一个已存在的文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入  文件映射用到的主要方法 CreateFileMapping function   123456789//在一个打开的文件之上创建一个文件映射对象H">
 <meta property="og:type" content="article">
-<meta property="og:title" content="process communicate 2">
+<meta property="og:title" content="进程通信2——文件">
 <meta property="og:url" content="http:/KatherineJY.github.io/2017/11/13/process-communicate-2/index.html">
 <meta property="og:site_name" content="KatherineJY">
+<meta property="og:description" content="server: 打开一个文件（可以没有这一步） -&amp;gt; 创建一个文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入client: 打开某一个已存在的文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入  文件映射用到的主要方法 CreateFileMapping function   123456789//在一个打开的文件之上创建一个文件映射对象H">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T02:46:19.427Z">
+<meta property="og:updated_time" content="2017-11-13T02:55:18.730Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="process communicate 2">
+<meta name="twitter:title" content="进程通信2——文件">
+<meta name="twitter:description" content="server: 打开一个文件（可以没有这一步） -&amp;gt; 创建一个文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入client: 打开某一个已存在的文件映射对象 -&amp;gt; 映射到进程的虚拟地址空间 -&amp;gt; 读取或写入  文件映射用到的主要方法 CreateFileMapping function   123456789//在一个打开的文件之上创建一个文件映射对象H">
 
 
 
@@ -122,7 +125,7 @@
 
 
 
-  <title>process communicate 2 | KatherineJY</title>
+  <title>进程通信2——文件 | KatherineJY</title>
   
 
 
@@ -306,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">process communicate 2</h1>
+          <h1 class="post-title" itemprop="name headline">进程通信2——文件</h1>
         
 
         <div class="post-meta">
@@ -356,7 +359,25 @@
       
 
       
-        
+        <p>server: 打开一个文件（可以没有这一步） -&gt; 创建一个文件映射对象 -&gt; 映射到进程的虚拟地址空间 -&gt; 读取或写入<br>client: 打开某一个已存在的文件映射对象 -&gt; 映射到进程的虚拟地址空间 -&gt; 读取或写入</p>
+<hr>
+<h3 id="文件映射用到的主要方法"><a href="#文件映射用到的主要方法" class="headerlink" title="文件映射用到的主要方法"></a>文件映射用到的主要方法</h3><ul>
+<li><p>CreateFileMapping function</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在一个打开的文件之上创建一个文件映射对象</span></div><div class="line"><span class="function">HANDLE WINAPI <span class="title">CreateFileMapping</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_     HANDLE                hFile,               <span class="comment">//已打开文件的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPSECURITY_ATTRIBUTES lpAttributes,        <span class="comment">//用于给映射对象加上安全性</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 flProtect,           <span class="comment">//用来指定映射文件的访问权限</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwMaximumSizeHigh,   <span class="comment">//指定映射对象的大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwMaximumSizeLow,    <span class="comment">//指定映射对象的大小。如果均为0，使用当前文件的大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPCTSTR               lpName               <span class="comment">//文件映射对象的名字</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+  <a id="more"></a></li>
+<li><p>OpenFileMapping function</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//打开现有的文件映射</span></div><div class="line"><span class="function">HANDLE WINAPI <span class="title">OpenFileMapping</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ DWORD   dwDesiredAccess,   <span class="comment">//对文件映射对象的读写权限</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ BOOL    bInheritHandle,    <span class="comment">//该文件映射的句柄是否被本进程创建的子进程继承</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ LPCTSTR lpName             <span class="comment">//文件映射对象的名字</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>MapViewOfFile function</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">LPVOID WINAPI <span class="title">MapViewOfFile</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ HANDLE hFileMappingObject, <span class="comment">//文件映射对象的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ DWORD  dwDesiredAccess,    <span class="comment">//映射对象的读写权限</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ DWORD  dwFileOffsetHigh,</span></span></div><div class="line"><span class="function"><span class="params">    _In_ DWORD  dwFileOffsetLow,    <span class="comment">//映射文件的其实位置</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ SIZE_T dwNumberOfBytesToMap<span class="comment">//映射区域的大小</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>CopyMemory function</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//内存复制</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CopyMemory</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_       PVOID  Destination,  <span class="comment">//目的地址</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">const</span> VOID   *Source,      <span class="comment">//起始地址</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_       SIZE_T Length        <span class="comment">//复制的地址空间的大小</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从文件映射到内存中，从共享内存中读取数据</span></div><div class="line">TCHAR szName[] = TEXT(<span class="string">"MyFileMappingObject1"</span>);<span class="comment">//文件映射区域的名字</span></div><div class="line"><span class="comment">//实验证明把CHAR强制转换成LPCSTR会有问题，用TCHAR比较保险</span></div><div class="line">HANDLE hMapFile = OpenFileMapping(  FILE_MAP_ALL_ACCESS,    <span class="comment">//对文件映射对象可读可写</span></div><div class="line">			                        FALSE,      <span class="comment">//子进程不继承这个句柄</span></div><div class="line">			                        szName);    <span class="comment">//文件映射对象的名字</span></div><div class="line"><span class="keyword">if</span> (hMapFile == <span class="literal">NULL</span>)<span class="keyword">return</span>;</div><div class="line"><span class="comment">//把文件映射对象映射到进程的地址空间</span></div><div class="line"><span class="keyword">int</span> BUF_SIZE = <span class="number">256</span>;                             <span class="comment">//该地址空间的大小</span></div><div class="line">LPCTSTR pBuf = (LPTSTR)MapViewOfFile(hMapFile,  <span class="comment">//文件映射对象的句柄</span></div><div class="line">		FILE_MAP_ALL_ACCESS,            <span class="comment">//可读可写</span></div><div class="line">		<span class="number">0</span>,                              </div><div class="line">		<span class="number">0</span>,                              <span class="comment">//从起始位置读取</span></div><div class="line">		BUF_SIZE);                      <span class="comment">//地址空间的大小</span></div><div class="line"><span class="keyword">if</span> (pBuf == <span class="literal">NULL</span>)</div><div class="line">&#123;</div><div class="line">	CloseHandle(hMapFile);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line">_tprintf(TEXT(<span class="string">"From Client: data = %s, size = %d\n"</span>), pBuf, <span class="keyword">sizeof</span>(pBuf));</div><div class="line">UnmapViewOfFile(pBuf);              <span class="comment">//释放文件视图</span></div><div class="line">CloseHandle(hMapFile);</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">TCHAR szName[] = TEXT(<span class="string">"MyFileMappingObject1"</span>);</div><div class="line"><span class="comment">//创建文件映射</span></div><div class="line">HANDLE hMapFile = CreateFileMapping(INVALID_HANDLE_VALUE,       <span class="comment">//用于进程内存共享，无需真的打开一个文件</span></div><div class="line">			                        <span class="literal">NULL</span>,           <span class="comment">//默认安全性</span></div><div class="line">			                        PAGE_READWRITE, <span class="comment">//可读可写</span></div><div class="line">			                        <span class="number">0</span>,              <span class="comment">//文件映射对象空间的大小</span></div><div class="line">			                        BUF_SIZE,       <span class="comment">//文件映射对象空间的大小</span></div><div class="line">			                        szName);        <span class="comment">//文件映射对象的名字</span></div><div class="line"><span class="keyword">if</span> (hMapFile == <span class="literal">NULL</span>)<span class="keyword">return</span> ;</div><div class="line"><span class="keyword">int</span> BUF_SIZE=<span class="number">256</span>;</div><div class="line">LPCTSTR pBuf;</div><div class="line">TCHAR szMsg[] = TEXT(<span class="string">"Hello~~"</span>);</div><div class="line">pBuf = (LPTSTR)MapViewOfFile(hMapFile,   FILE_MAP_ALL_ACCESS, <span class="number">0</span>,<span class="number">0</span>,BUF_SIZE);</div><div class="line"><span class="keyword">if</span> (pBuf == <span class="literal">NULL</span>)</div><div class="line">&#123;</div><div class="line">    CloseHandle(hMapFile);</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line">_tprintf(TEXT(<span class="string">"To Server: data = %s"</span>),szMsg);</div><div class="line"><span class="comment">//把要发送的内容放到建立了映射关系的地址空间里</span></div><div class="line">CopyMemory((PVOID)pBuf, szMsg, (_tcslen(szMsg) * <span class="keyword">sizeof</span>(TCHAR)));</div><div class="line"><span class="comment">//等待命令行的一个输入，这里是起等待服务端回应的作用。不然映射文件对象释放后，服务端就读不到数据了</span></div><div class="line">_getch();</div><div class="line">UnmapViewOfFile(pBuf);</div><div class="line">CloseHandle(hMapFile);</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -440,8 +461,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -512,6 +542,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件映射用到的主要方法"><span class="nav-number">1.</span> <span class="nav-text">文件映射用到的主要方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">2.</span> <span class="nav-text">demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
