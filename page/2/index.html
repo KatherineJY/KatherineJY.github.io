@@ -1006,39 +1006,21 @@
 
       
         
-          
-            <p>就是有一种执念，非要上google</p>
+          <p>就是有一种执念，非要上google</p>
 <hr>
 <h3 id="Github-Education"><a href="#Github-Education" class="headerlink" title="Github Education"></a>Github Education</h3><p>里面有个学生的discount package，很良心。而且申请超级快，隔天就申请到了，效率感人。提供的discount package里面就有digital ocean的50刀代金券。</p>
 <hr>
 <h3 id="digital-ocean"><a href="#digital-ocean" class="headerlink" title="digital ocean"></a>digital ocean</h3><ul>
 <li>vps是在digital ocean购买的，对的，就是为了用代金券。激活账号还是要花费5刀的。</li>
 <li>激活后选择一台服务器 我选的是ubuntu操作系统的 在新加坡的 设置密码…</li>
-<li>使用puttygen生成ssh公钥私钥，在digitalocean上设置自己的公钥（由于SSH密钥使用的是信息安全的随机块创建，需要点击对话框的空白区域随机生成数据，要一直点击，直到完成<br>&lt;!–more&gt;<br>。我一开始就一直傻傻地等，后来才看到英文提示）</li>
-<li>使用PuTTY创建SSH会话，连接服务器<ul>
-<li>选择windows，输入刚开新建的虚拟机的IP，使用默认端口号22</li>
-<li>ssh-&gt;auth 选择刚刚上传的公钥对应的私钥</li>
-<li>创建session。以后直接点击session就可以开启对应的远程连接</li>
-</ul>
-</li>
-<li><p>远程到国外的服务器上，安装shadowsock服务器端</p>
-<ul>
-<li><p>安装用到的三条命令</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install pip</div><div class="line">pip install --upgrade pip</div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure>
-</li>
-<li><p>编写shadowsocks.json配置脚本</p>
-<p>  修改这个文件<code>/etc/shadowsocks.json</code></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot;&#123;</div><div class="line">    &apos;server&apos;:&apos;0.0.0.0&apos;,</div><div class="line">    &apos;server_port&apos;:8888,</div><div class="line">    &apos;local_address&apos;: &apos;127.0.0.1&apos;,</div><div class="line">    &apos;local_port&apos;:1080,</div><div class="line">    &apos;password&apos;:&apos;youpassword&apos;,</div><div class="line">    &apos;timeout&apos;:300,</div><div class="line">    &apos;method&apos;:&apos;aes-256-cfb&apos;,</div><div class="line">    &apos;fast_open&apos;: false</div><div class="line">&#125;&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>ssserver -c /etc/shadowsocks.json -d</code>运行shadowsocks</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>下载shadowsocks客户端，根据刚刚填的shadowsocks.json中的相应信息进行填写。然后启用服务就ok了。</p>
-
-          
+<li>使用puttygen生成ssh公钥私钥，在digitalocean上设置自己的公钥（由于SSH密钥使用的是信息安全的随机块创建，需要点击对话框的空白区域随机生成数据，要一直点击，直到完成
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/09/vps-ssr/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
