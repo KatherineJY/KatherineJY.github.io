@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
+<meta name="description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++ primer Plus 复合类型——结构">
 <meta property="og:url" content="http:/KatherineJY.github.io/2017/11/27/c-primer-Plus-chap4/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
+<meta property="og:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T08:29:47.701Z">
+<meta property="og:updated_time" content="2017-11-27T09:01:30.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++ primer Plus 复合类型——结构">
-<meta name="twitter:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
+<meta name="twitter:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。">
 
 
 
@@ -330,13 +330,25 @@
       
 
       
-        <h3 id="结构中的位字段"><a href="#结构中的位字段" class="headerlink" title="结构中的位字段"></a>结构中的位字段</h3><p>C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">torgle_register</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SN : <span class="number">4</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="number">4</span>;   <span class="comment">//4 bits for unused 提供间隔</span></div><div class="line">    <span class="keyword">bool</span> goodIn : <span class="number">1</span>;</div><div class="line">    <span class="keyword">bool</span> goodTorgle : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">torgle_register tr = &#123; <span class="number">14</span>, <span class="literal">true</span>, <span class="literal">false</span> &#125;;</div></pre></td></tr></table></figure></p>
+        <h3 id="结构中的位字段"><a href="#结构中的位字段" class="headerlink" title="结构中的位字段"></a>结构中的位字段</h3><p>C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。<br><a id="more"></a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">torgle_register</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SN : <span class="number">4</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="number">4</span>;   <span class="comment">//4 bits for unused 提供间隔</span></div><div class="line">    <span class="keyword">bool</span> goodIn : <span class="number">1</span>;</div><div class="line">    <span class="keyword">bool</span> goodTorgle : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">torgle_register tr = &#123; <span class="number">14</span>, <span class="literal">true</span>, <span class="literal">false</span> &#125;;</div></pre></td></tr></table></figure></p>
 <p>位字段通常用于低级编程</p>
 <hr>
 <h3 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h3><ul>
 <li>共用体是一种数据结构，它能够存储不同的数据类型，但只能同时存储其中的一种类型呢。</li>
 <li>共用体的长度为其最大成员的长度</li>
-<li>匿名共用体没有名称，其成员将成为位于相同地址处的变量。</li>
+<li>匿名共用体没有名称，其成员将成为位于相同地址处的变量。<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3></li>
+<li>enum提供了另一种创建符号常量的方式，这种方式可以代替const</li>
+<li>在默认情况下，将整数值赋给枚举量，第一个枚举量的值为0。可以显式地指定整数值来覆盖默认值。</li>
+<li><p>对于枚举，只定义了赋值运算符</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> spectrum &#123;red, orange, yellow, green, blue, violet, indigo, ultraviolet&#125;;</div><div class="line">spectrum band;</div><div class="line"></div><div class="line">band = blue;            <span class="comment">//合法</span></div><div class="line">band = <span class="number">3</span>;               <span class="comment">//非法 不能将int赋值给枚举</span></div><div class="line">++band;                 <span class="comment">//合法 枚举量转成int使用</span></div><div class="line">band = orange + red;    <span class="comment">//not valid，but a little tricky</span></div><div class="line">band = spectrum(<span class="number">3</span>);    <span class="comment">//将3转换为枚举量</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置枚举量的值</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> bigstep&#123;first, second = <span class="number">100</span>, third&#125;;</div><div class="line"><span class="comment">//first = 0 third = 101</span></div><div class="line"><span class="comment">//没有被初始化的枚举量的值将比其前面的枚举量大1</span></div><div class="line"></div><div class="line"><span class="keyword">enum</span> &#123;zero, null = <span class="number">0</span>, one, numero_uno = <span class="number">1</span>&#125;;</div><div class="line"><span class="comment">//zero = null = 0  one = numero_uno = 1</span></div><div class="line"><span class="comment">//可以创建多个值相同的枚举量</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>枚举的取值范围</p>
+<p>  C++通过强制类型转换，增加了可赋给枚举变量的合法值。每个枚举都有取值范围，通过强制类型转换，可以将取值范围中的任何整数赋给枚举变量，即使这个值不是枚举量。</p>
+<p>  取值范围的定义如下。找出上限——大于枚举量的最大值的最小2^n-1。下限——如果不小于0，则为0；否则，采用与寻找上限方式相同的方式。</p>
+</li>
 </ul>
 
       
@@ -519,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构中的位字段"><span class="nav-number">1.</span> <span class="nav-text">结构中的位字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共用体"><span class="nav-number">2.</span> <span class="nav-text">共用体</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构中的位字段"><span class="nav-number">1.</span> <span class="nav-text">结构中的位字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共用体"><span class="nav-number">2.</span> <span class="nav-text">共用体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-number">3.</span> <span class="nav-text">枚举</span></a></li></ol></div>
             
 
           </div>
