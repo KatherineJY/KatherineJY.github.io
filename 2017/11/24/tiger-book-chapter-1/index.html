@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式 各阶段的描述  |阶段|描述|  |—-|—:|  |词法分析|将源文件分解为一个个单">
+<meta name="description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虎书学习笔记 chapter1">
 <meta property="og:url" content="http:/KatherineJY.github.io/2017/11/24/tiger-book-chapter-1/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式 各阶段的描述  |阶段|描述|  |—-|—:|  |词法分析|将源文件分解为一个个单">
+<meta property="og:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T03:06:06.743Z">
+<meta property="og:updated_time" content="2017-11-27T02:46:16.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虎书学习笔记 chapter1">
-<meta name="twitter:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式 各阶段的描述  |阶段|描述|  |—-|—:|  |词法分析|将源文件分解为一个个单">
+<meta name="twitter:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式">
 
 
 
@@ -332,8 +332,32 @@
         <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
 <li>Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。<h3 id="模块与接口"><a href="#模块与接口" class="headerlink" title="模块与接口"></a>模块与接口</h3></li>
 <li>抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。</li>
-<li>另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式</li>
-<li>各阶段的描述<br>  |阶段|描述|<br>  |—-|—:|<br>  |词法分析|将源文件分解为一个个单独的符号|<br>  |语法分析|分析程序的短语结构|<br>  |语义动作|<br>  |语义分析|<br>  |栈帧布局|<br>  |翻译|<br>  |规范化|<br>  |指令选择|<br>  |控制流分析|<br>  |数据流分析|<br>  |寄存器分配|<br>  |代码流出|</li>
+<li>另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式<a id="more"></a></li>
+<li>各阶段的描述<br>  |阶段|描述|<br>  |—-|—:|<br>  |词法分析|将源文件分解为一个个单独的符号|<br>  |语法分析|分析程序的短语结构|<br>  |语义动作|建立每个短语对应的抽象语法树|<br>  |语义分析|确定每个短语的含义，建立变量和其声明的关联，检查表达式的类型，翻译每个短语|<br>  |栈帧布局|按机器要求的方式将变量、函数参数等分配于活跃记录内|<br>  |翻译|生成中间表示树（IR树）|<br>  |规范化|提取表达式中的副作用，整理条件分支，以方便下一阶段的处理|<br>  |指令选择|将IR树节点组合成与目标机指令相对应的块|<br>  |控制流分析|分析指令的顺序并建立控制流图，此图表示程序执行时可能流经的所有控制流|<br>  |数据流分析|收集程序变量的数据流信息|<br>  |寄存器分配|为程序中的每一个变量和临时数据选择一个寄存器，不在同一点活跃的两个变量可以共享同一个寄存器|<br>  |代码流出|用机器寄存器替代每一条机器指令中出现的临时变量名|</li>
+</ul>
+<hr>
+<h3 id="工具和软件"><a href="#工具和软件" class="headerlink" title="工具和软件"></a>工具和软件</h3><ul>
+<li>上下文无关文法（语法分析） 正则表达式（词法分析）</li>
+<li>Yacc（将文法转换成语法分析器） Lex（将说明性的规范转换成一个词法分析器）</li>
+<li>www.cs.princeton.edu/~appel/modern/c</li>
+</ul>
+<hr>
+<h3 id="树语言的数据结构"><a href="#树语言的数据结构" class="headerlink" title="树语言的数据结构"></a>树语言的数据结构</h3><ul>
+<li>编译器中的许多重要的数据结构都是被编译程序的中间表示，它们常常采用树的形式</li>
+<li>源代码形式不易处理</li>
+<li>采用树数据结构 每一条语句（Stm）和每一个表达式（Exp）都有一个树节点</li>
+<li>直线型程序设计语言（没有if和循环）<br>  |形式|类型|<br>  |—|—:|<br>  |Stm → Stm;Stm|CompoundStm|<br>  |Stm → id:=Exp|AssignStm|<br>  |Stm → print(ExpList)|PrintStm|<br>  |Exp → id|IdExp|<br>  |Exp → num|NumExp|<br>  |Exp → Exp Binop Exp|OpExp|<br>  |Exp → (Stm,Exp)|EseqExp|<br>  |ExpList → Exp,ExpList|PairExpList|<br>  |ExpList → Exp|LastExpList|<br>  |Binop → + - * /|Plus Minus Times Div|   </li>
+<li><p>一个例子</p>
+<ul>
+<li>a:=5+3;b:=(print(a,a-1),10*a);print(b)<br>(此处省略一个树形结构图)</li>
+<li><p>将文法直接翻译成数据结构<br>  每一项文法规则都有一个构造器。表示每一个文法的结构都包含一个union和kind域，前者用于存放可选的成分值,后者用于指明选用这个联合中的哪一个成员。</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *<span class="built_in">string</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">A_stm_</span> *<span class="title">A_stm_</span>;</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">A_exp_</span> *<span class="title">A_exp_</span>;</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">A_expList_</span> *<span class="title">A_expList</span>;</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;A_plus,A_minus,A_times,A_div&#125; A_binop;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A_stm_</span> &#123;</span></div><div class="line">    <span class="keyword">enum</span> &#123; A_CompondStm, A_assignStm, A_printStm &#125; kind;</div><div class="line">    <span class="keyword">union</span> &#123;</div><div class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>A_stm stm1,stm2;&#125; compound;</div><div class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span><span class="built_in">string</span> id;A_exp <span class="built_in">exp</span>;&#125; assign;</div><div class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>A_expList exps;&#125; print;</div><div class="line">    &#125; u;</div><div class="line">&#125;;</div><div class="line"><span class="function">A_exp <span class="title">A_IdExp</span><span class="params">(<span class="built_in">string</span> id)</span></span>;</div><div class="line"><span class="function">A_exp <span class="title">A_NumExp</span><span class="params">(<span class="keyword">int</span> num)</span></span>;</div><div class="line"><span class="function">A_exp <span class="title">A_OpExp</span><span class="params">(A_exp left, A_binop oper, A_exp right)</span></span>;</div><div class="line"><span class="function">A_exp <span class="title">A_EseqExp</span><span class="params">(A_stm stm,A_exp <span class="built_in">exp</span>)</span></span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">A_expList_</span> &#123;</span></div><div class="line">    <span class="keyword">enum</span> &#123;A_pairExpList,A_lastExpList&#125; kind;</div><div class="line">    <span class="keyword">union</span> &#123;</div><div class="line">        <span class="class"><span class="keyword">struct</span> &#123;</span>A_exp head;A_expList tail;&#125; pair;</div><div class="line">        A_exp last;</div><div class="line">    &#125; u;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对于每一种选择,创建一个构造函数,它用malloc为数据结构分配内存空间b并对其进行初始化.上面的程序只是给出了函数原型.</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//构造一个复合表达式</span></div><div class="line"><span class="function">A_stm <span class="title">A_CompoundStm</span><span class="params">(A_stm stm1, A_Stm stm2)</span></span>&#123;</div><div class="line">    <span class="comment">//分配所需的内存</span></div><div class="line">    A_stm s = checked_malloc(<span class="keyword">sizeof</span>(*s));</div><div class="line">    <span class="comment">//指明这个表达式的类型</span></div><div class="line">    s-&gt;kind = A_compoundStm;</div><div class="line">    <span class="comment">//指明这个表达式的具体组成部分</span></div><div class="line">    s-&gt;u.compound.stm1 = stm1;</div><div class="line">    s-&gt;u.compound.stm2 = stm2;</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -510,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#绪论"><span class="nav-number">1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块与接口"><span class="nav-number">1.0.2.</span> <span class="nav-text">模块与接口</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#绪论"><span class="nav-number">1.</span> <span class="nav-text">绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块与接口"><span class="nav-number">1.0.2.</span> <span class="nav-text">模块与接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具和软件"><span class="nav-number">1.0.3.</span> <span class="nav-text">工具和软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树语言的数据结构"><span class="nav-number">1.0.4.</span> <span class="nav-text">树语言的数据结构</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
