@@ -262,6 +262,257 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/27/c-primer-Plus-chap4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/27/c-primer-Plus-chap4/" itemprop="url">c++ primer Plus 复合类型——结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T16:16:29+08:00">
+                2017-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="结构中的位字段"><a href="#结构中的位字段" class="headerlink" title="结构中的位字段"></a>结构中的位字段</h3><p>C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">torgle_register</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SN : <span class="number">4</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="number">4</span>;   <span class="comment">//4 bits for unused 提供间隔</span></div><div class="line">    <span class="keyword">bool</span> goodIn : <span class="number">1</span>;</div><div class="line">    <span class="keyword">bool</span> goodTorgle : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">torgle_register tr = &#123; <span class="number">14</span>, <span class="literal">true</span>, <span class="literal">false</span> &#125;;</div></pre></td></tr></table></figure></p>
+<p>位字段通常用于低级编程</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/27/c-standard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/27/c-standard/" itemprop="url">关于C编程的一些规范</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T10:49:19+08:00">
+                2017-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>摘自《现代编译原理》</p>
+<hr>
+<h3 id="程序设计风格"><a href="#程序设计风格" class="headerlink" title="程序设计风格"></a>程序设计风格</h3><p>在用C表示树数据结构时,遵循以下一些约定：</p>
+<ol>
+<li>树都用文法表示</li>
+<li>一棵树用一至多个typedef来表示,每个typedef对应文法中的符号</li>
+<li>每个typedef定义一个指向相应struct的指针，这个struct的名字以下划线结束，它除了在typedef的声明中和该结构定义本身中出现外，绝不会在其他地方使用。（TODO:不是很明白为什么要有这条要求 这个指针具体在哪里会用到呢？？）</li>
+<li>每一个struct有一个kind成员和u成员.kind是一个指明不同选择的枚举量，每个枚举值对应一个可选的文法规则。</li>
+<li>如果有一个规则的右部有多个非平凡的符号，则它的union有一个本身也是结构的成员给出组成它的这些值。(TODO:不是很明白为什么会多个非平凡值的情况。一个union配一个kind？？)</li>
+<li>如果一个规则的右部只有一个</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/24/tiger-book-chapter-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1359,258 +1610,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/13/process-communicate-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KatherineJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KatherineJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/process-communicate-2/" itemprop="url">进程通信2——文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:46:19+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>server: 打开一个文件（可以没有这一步） -&gt; 创建一个文件映射对象 -&gt; 映射到进程的虚拟地址空间 -&gt; 读取或写入<br>client: 打开某一个已存在的文件映射对象 -&gt; 映射到进程的虚拟地址空间 -&gt; 读取或写入</p>
-<hr>
-<h3 id="文件映射用到的主要方法"><a href="#文件映射用到的主要方法" class="headerlink" title="文件映射用到的主要方法"></a>文件映射用到的主要方法</h3><ul>
-<li><p>CreateFileMapping function</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在一个打开的文件之上创建一个文件映射对象</span></div><div class="line"><span class="function">HANDLE WINAPI <span class="title">CreateFileMapping</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_     HANDLE                hFile,               <span class="comment">//已打开文件的句柄</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPSECURITY_ATTRIBUTES lpAttributes,        <span class="comment">//用于给映射对象加上安全性</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 flProtect,           <span class="comment">//用来指定映射文件的访问权限</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwMaximumSizeHigh,   <span class="comment">//指定映射对象的大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_     DWORD                 dwMaximumSizeLow,    <span class="comment">//指定映射对象的大小。如果均为0，使用当前文件的大小</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_opt_ LPCTSTR               lpName               <span class="comment">//文件映射对象的名字</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/process-communicate-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/13/print-all-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KatherineJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KatherineJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/print-all-process/" itemprop="url">遍历当前所有进程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:44:51+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="PROCESSENTRY32-structure"><a href="#PROCESSENTRY32-structure" class="headerlink" title="PROCESSENTRY32 structure"></a>PROCESSENTRY32 structure</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//当获得系统快照时，PROCESSENTRY32表示当前系统中的一系列进程的入口地址</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagPROCESSENTRY32</span> &#123;</span></div><div class="line">    DWORD     dwSize;               <span class="comment">//当前结构的大小 </span></div><div class="line">                                    <span class="comment">//使用PROCESSENTRY32之前要先对dwSize进行初始化</span></div><div class="line">    <span class="comment">/*不用了*/</span>DWORD     cntUsage;             </div><div class="line">    DWORD     th32ProcessID;        <span class="comment">//进程标识号</span></div><div class="line">    <span class="comment">/*不用了*/</span>ULONG_PTR th32DefaultHeapID;</div><div class="line">    <span class="comment">/*不用了*/</span>DWORD     th32ModuleID;</div><div class="line">    DWORD     cntThreads;           <span class="comment">//这个进程下正在运行的线程的总数</span></div><div class="line">    DWORD     th32ParentProcessID;  <span class="comment">//这个进程的父进程的标识号</span></div><div class="line">    LONG      pcPriClassBase;       <span class="comment">//由这个进程启动的线程的基本优先级</span></div><div class="line">    <span class="comment">/*不用了*/</span>DWORD     dwFlags;    </div><div class="line">    TCHAR     szExeFile[MAX_PATH];  <span class="comment">//这个进程的可执行文件的名字</span></div><div class="line">&#125; PROCESSENTRY32, *PPROCESSENTRY32;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/print-all-process/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1665,7 +1664,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1678,7 +1677,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

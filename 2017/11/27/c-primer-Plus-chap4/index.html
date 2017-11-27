@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="本来是想写个带图形化界面的文件遍历程序的，结果偶然发现了JFileChooser这个类，发现用这个类的话，好像就没我什么事了。">
+<meta name="description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JFileChooser">
-<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/09/jfilechooser/index.html">
+<meta property="og:title" content="c++ primer Plus 复合类型——结构">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/27/c-primer-Plus-chap4/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="本来是想写个带图形化界面的文件遍历程序的，结果偶然发现了JFileChooser这个类，发现用这个类的话，好像就没我什么事了。">
+<meta property="og:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-08T19:10:31.210Z">
+<meta property="og:updated_time" content="2017-11-27T08:22:14.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JFileChooser">
-<meta name="twitter:description" content="本来是想写个带图形化界面的文件遍历程序的，结果偶然发现了JFileChooser这个类，发现用这个类的话，好像就没我什么事了。">
+<meta name="twitter:title" content="c++ primer Plus 复合类型——结构">
+<meta name="twitter:description" content="结构中的位字段C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。123456789struct torgle_register&amp;#123;    unsigned int SN : 4;    unsigned int : 4;   //4 bits for unused 提供间隔    bool goodIn : 1;">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/09/jfilechooser/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/27/c-primer-Plus-chap4/"/>
 
 
 
 
 
-  <title>JFileChooser | KatherineJY</title>
+  <title>c++ primer Plus 复合类型——结构 | KatherineJY</title>
   
 
 
@@ -262,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/jfilechooser/">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/27/c-primer-Plus-chap4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KatherineJY">
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JFileChooser</h1>
+          <h1 class="post-title" itemprop="name headline">c++ primer Plus 复合类型——结构</h1>
         
 
         <div class="post-meta">
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T03:06:11+08:00">
-                2017-11-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-27T16:16:29+08:00">
+                2017-11-27
               </time>
             
 
@@ -329,38 +330,9 @@
       
 
       
-        <p>本来是想写个带图形化界面的文件遍历程序的，结果偶然发现了JFileChooser这个类，发现用这个类的话，好像就没我什么事了。<br><a id="more"></a></p>
-<hr>
-<p>JFileChooser常用方法</p>
-<ul>
-<li>构造函数<ul>
-<li><code>JFileChooser()</code> 构造一个指向用户默认目录document的JFileChooser</li>
-<li><code>JFileChooser(File)</code> 根据给定的路径构造一个JFileChooser</li>
-</ul>
-</li>
-<li>setFileSelectionMode<br>设置JFileChooser选择的类型，有三种方式：<ul>
-<li>FILES_AND_DIRECTORIES 显示文件和目录</li>
-<li>FILES_ONLY 只显示文件</li>
-<li>DIRECTORIES_ONLY 只显示目录</li>
-</ul>
-</li>
-<li>设置各种对话框<ul>
-<li>showDialog(Component,String)自定义一个文件选择器对话框，第二个参数是其显示出来的名称。</li>
-<li>showOpenDialog(Component)设置一个打开文件的文件选择器对话框。</li>
-<li>showSaveDialog(Component)设置一个保存文件的文件选择器对话框。</li>
-</ul>
-</li>
-<li>选择文件相关设置<ul>
-<li>setMultiSelectionEnabled(Boolean)设置可否选择多个文件</li>
-<li>setFileFliter(FileFliter)设置文件过滤器选择特定后缀名的文件</li>
-<li>getSelectedFile()返回选中的文件</li>
-<li>getSelectedFiles()如果允许选择多个文件，返回选中的文件列表</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>demo<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//FileHolder.java</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileHolder</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> JFileChooser fileChooser = <span class="keyword">null</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FileHolder</span><span class="params">(String currentpath)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		fileChooser = <span class="keyword">new</span> JFileChooser( currentpath );</div><div class="line">		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);</div><div class="line">		<span class="keyword">int</span> state = fileChooser.showOpenDialog(fileChooser);</div><div class="line">		<span class="keyword">if</span>( state == fileChooser.APPROVE_OPTION )&#123;</div><div class="line">			File currentFile = fileChooser.getSelectedFile();</div><div class="line">			System.out.println(currentFile.getAbsolutePath());</div><div class="line">			<span class="keyword">if</span>( currentFile.isDirectory() )&#123;</div><div class="line">				<span class="keyword">new</span> FileHolder(currentFile.getAbsolutePath());</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				useCmdToOpenFile(currentFile);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>.add(fileChooser);</div><div class="line">		<span class="keyword">this</span>.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">useCmdToOpenFile</span><span class="params">(File currentFile)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		 Runtime.getRuntime().exec(<span class="keyword">new</span> String[]&#123;<span class="string">"cmd.exe"</span>, <span class="string">"/c"</span>, currentFile.getAbsolutePath()&#125;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Test</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFileHolder</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		<span class="keyword">new</span> FileHolder(<span class="string">"C:"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h3 id="结构中的位字段"><a href="#结构中的位字段" class="headerlink" title="结构中的位字段"></a>结构中的位字段</h3><p>C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">torgle_register</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SN : <span class="number">4</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="number">4</span>;   <span class="comment">//4 bits for unused 提供间隔</span></div><div class="line">    <span class="keyword">bool</span> goodIn : <span class="number">1</span>;</div><div class="line">    <span class="keyword">bool</span> goodTorgle : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">torgle_register tr = &#123; <span class="number">14</span>, <span class="literal">true</span>, <span class="literal">false</span> &#125;;</div></pre></td></tr></table></figure></p>
+<p>位字段通常用于低级编程</p>
+
       
     </div>
     
@@ -375,6 +347,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
 
       
       
@@ -384,8 +362,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/09/exif/" rel="next" title="获取exif信息">
-                <i class="fa fa-chevron-left"></i> 获取exif信息
+              <a href="/2017/11/27/c-standard/" rel="next" title="关于C编程的一些规范">
+                <i class="fa fa-chevron-left"></i> 关于C编程的一些规范
               </a>
             
           </div>
@@ -393,10 +371,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/09/process-communicate-1/" rel="prev" title="进程通信1——命名管道">
-                进程通信1——命名管道 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -448,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -520,6 +503,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构中的位字段"><span class="nav-number">1.</span> <span class="nav-text">结构中的位字段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
