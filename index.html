@@ -335,6 +335,12 @@
           
             <h3 id="结构中的位字段"><a href="#结构中的位字段" class="headerlink" title="结构中的位字段"></a>结构中的位字段</h3><p>C++允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。这样的每个成员称为位字段。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">torgle_register</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SN : <span class="number">4</span>;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="number">4</span>;   <span class="comment">//4 bits for unused 提供间隔</span></div><div class="line">    <span class="keyword">bool</span> goodIn : <span class="number">1</span>;</div><div class="line">    <span class="keyword">bool</span> goodTorgle : <span class="number">1</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">torgle_register tr = &#123; <span class="number">14</span>, <span class="literal">true</span>, <span class="literal">false</span> &#125;;</div></pre></td></tr></table></figure></p>
 <p>位字段通常用于低级编程</p>
+<hr>
+<h3 id="共用体"><a href="#共用体" class="headerlink" title="共用体"></a>共用体</h3><ul>
+<li>共用体是一种数据结构，它能够存储不同的数据类型，但只能同时存储其中的一种类型呢。</li>
+<li>共用体的长度为其最大成员的长度</li>
+<li>匿名共用体没有名称，其成员将成为位于相同地址处的变量。</li>
+</ul>
 
           
         
