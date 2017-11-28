@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javaScript," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
-<meta name="keywords" content="javaScript">
+<meta name="description" content="Pieces solve a puzzle!">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js内存管理">
-<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/15/js-gc/index.html">
+<meta property="og:title" content="c struct">
+<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/28/c-struct/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
+<meta property="og:description" content="Pieces solve a puzzle!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-15T02:51:15.231Z">
+<meta property="og:updated_time" content="2017-11-28T15:32:12.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js内存管理">
-<meta name="twitter:description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
+<meta name="twitter:title" content="c struct">
+<meta name="twitter:description" content="Pieces solve a puzzle!">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/15/js-gc/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/28/c-struct/"/>
 
 
 
 
 
-  <title>js内存管理 | KatherineJY</title>
+  <title>c struct | KatherineJY</title>
   
 
 
@@ -263,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/15/js-gc/">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/28/c-struct/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KatherineJY">
@@ -280,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js内存管理</h1>
+          <h1 class="post-title" itemprop="name headline">c struct</h1>
         
 
         <div class="post-meta">
@@ -292,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T09:37:37+08:00">
-                2017-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T23:32:12+08:00">
+                2017-11-28
               </time>
             
 
@@ -330,59 +329,7 @@
       
 
       
-        <p>摘录自这个文档：<br><code>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management</code></p>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><blockquote>
-<p>JavaScript values are allocated when things  are created and “automatically” freed when they are not used anymore.</p>
-</blockquote>
-<p>js对象在被创建时分配内存，当它们不再被使用时被自动释放。然而这里的“自动”并不意味着程序员就可以不管这些对象的内存释放。<br><a id="more"></a></p>
-<hr>
-<h3 id="Memory-life-cycle"><a href="#Memory-life-cycle" class="headerlink" title="Memory life cycle"></a>Memory life cycle</h3><ul>
-<li><h4 id="Allocation-in-JavaScript"><a href="#Allocation-in-JavaScript" class="headerlink" title="Allocation in JavaScript"></a>Allocation in JavaScript</h4><ul>
-<li><p>Value initialization</p>
-<ol>
-<li>当声明变量<code>declaring values</code>的时候会分配内存空间</li>
-<li>当定义函数的时候也会创建对象并为该对象分配内存，创建的是<code>a callback object</code></li>
-<li>funtion expression(理解为匿名函数表达式？？)也会引发内存分配 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someElement.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      ...  </div><div class="line">&#125;,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>Allocation via function calls</p>
-<ol>
-<li><p>有些函数会引发对象的内存分配</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"> <span class="comment">//为变量d分配一个Date()对象的内存空间</span></div><div class="line"> <span class="keyword">var</span> e = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line"><span class="comment">//为变量e分配一个DOM元素的内存空间</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>有些方法会为新的变量或对象分配空间<br> （感觉讲的和上面那个好像）</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'azerty'</span>;</div><div class="line"><span class="keyword">var</span> s2 = s.substr(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line"><span class="comment">//String是不可改变的，所以js并不分配一个存储string的内存，而是只保存范围0~3</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = [<span class="string">'ouais ouais'</span>,<span class="string">'nnn'</span>];</div><div class="line"><span class="keyword">var</span> a2 = [<span class="string">'nnn'</span>,<span class="string">'ddd'</span>];</div><div class="line"><span class="keyword">var</span> a3 = a.concat(a2); </div><div class="line"><span class="comment">//新数组是前两个数组的连接</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h4 id="Release-when-the-memory-is-not-needed-anymore"><a href="#Release-when-the-memory-is-not-needed-anymore" class="headerlink" title="Release when the memory is not needed anymore"></a>Release when the memory is not needed anymore</h4><blockquote>
-<p>to find when “the allocated memory is not needed any longer”; to determine where in the program such piece of memory is not needed anymore and free it.</p>
-<p>“garbage collector” whose job is to track memory allocation and use in order to find when a piece of allocated memory is not needed any longer in which case, it will automatically free it. This process is an approximation since the general problem of knowing whether some piece of memory is needed is undecidable (can’t be solved by an algorithm).</p>
-<h5 id="garbage-collector"><a href="#garbage-collector" class="headerlink" title="garbage collector"></a>garbage collector</h5><ul>
-<li>References</li>
-<li>References-counting garbage collector<ul>
-<li>当一个对象不再被其他对象引用时，就认为它是not needed anymore,它就可以被垃圾收集器收集。</li>
-<li>Limitation: cycles<br> 最简单的一个例子就是有两个对象，这两个对象相互引用,那这两个对象都至少有一个引用，谁都不能再谁之前先被消除。即使它们俩都无用了，也无法通过引用计数这个算法计算出来。</li>
-</ul>
-</li>
-<li>Mark-and-sweep algorithm<ul>
-<li><blockquote>
-<p>reduces the definition of “an object is not needed anymore” to “an object is unreachable”</p>
-</blockquote>
-</li>
-<li>这个算法定义一些根对象（在js中就是全局对象）。垃圾收集器定期从这些根对象出发，找到引用这些对象的对象，再找引用新发现的对象的对象，以此类推。这些找到的对象就是所有的reachable objects。那么其余的就是unreachable objects，由垃圾收集器收集。</li>
-<li>Limitation: objects need to be made explicitly unreachable。对象需要被显式地表达为不可达，但在现实中很少涉及。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-
+        
       
     </div>
     
@@ -397,12 +344,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
-          
-        </div>
-      
 
       
       
@@ -412,8 +353,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/13/process-communication-3/" rel="next" title="进程通信3——socket">
-                <i class="fa fa-chevron-left"></i> 进程通信3——socket
+              <a href="/2017/11/27/c-primer-Plus-chap4/" rel="next" title="c++ primer Plus 复合类型——结构">
+                <i class="fa fa-chevron-left"></i> c++ primer Plus 复合类型——结构
               </a>
             
           </div>
@@ -421,10 +362,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/16/js-object/" rel="prev" title="javascritp 继承和原型链">
-                javascritp 继承和原型链 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -476,17 +413,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,22 +485,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-life-cycle"><span class="nav-number">2.</span> <span class="nav-text">Memory life cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Allocation-in-JavaScript"><span class="nav-number">2.1.</span> <span class="nav-text">Allocation in JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Release-when-the-memory-is-not-needed-anymore"><span class="nav-number">2.2.</span> <span class="nav-text">Release when the memory is not needed anymore</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#garbage-collector"><span class="nav-number">2.2.1.</span> <span class="nav-text">garbage collector</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
