@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="KatherineJY">
 <meta property="og:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-27T02:46:16.591Z">
+<meta property="og:updated_time" content="2017-12-04T16:49:35.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虎书学习笔记 chapter1">
 <meta name="twitter:description" content="绪论背景 Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。模块与接口 抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。 另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式">
@@ -333,7 +333,7 @@
 <li>Tiger语言是一种类Alogl的语言，它有嵌套的作用域和在堆中分配存储空间的记录。<h3 id="模块与接口"><a href="#模块与接口" class="headerlink" title="模块与接口"></a>模块与接口</h3></li>
 <li>抽象语法（Abstract Synatx）、IR树、汇编（Assem）之类的接口是数据结构形式的。</li>
 <li>另一些接口是抽象数据类型的：翻译接口是一组可由语义分析阶段调用的函数；单词（Token）符号接口是函数形式<a id="more"></a></li>
-<li>各阶段的描述<br>  |阶段|描述|<br>  |—-|—:|<br>  |词法分析|将源文件分解为一个个单独的符号|<br>  |语法分析|分析程序的短语结构|<br>  |语义动作|建立每个短语对应的抽象语法树|<br>  |语义分析|确定每个短语的含义，建立变量和其声明的关联，检查表达式的类型，翻译每个短语|<br>  |栈帧布局|按机器要求的方式将变量、函数参数等分配于活跃记录内|<br>  |翻译|生成中间表示树（IR树）|<br>  |规范化|提取表达式中的副作用，整理条件分支，以方便下一阶段的处理|<br>  |指令选择|将IR树节点组合成与目标机指令相对应的块|<br>  |控制流分析|分析指令的顺序并建立控制流图，此图表示程序执行时可能流经的所有控制流|<br>  |数据流分析|收集程序变量的数据流信息|<br>  |寄存器分配|为程序中的每一个变量和临时数据选择一个寄存器，不在同一点活跃的两个变量可以共享同一个寄存器|<br>  |代码流出|用机器寄存器替代每一条机器指令中出现的临时变量名|</li>
+<li>各阶段的描述<br>  |阶段|描述|<br>  |:—-|:—|<br>  |词法分析|将源文件分解为一个个单独的符号|<br>  |语法分析|分析程序的短语结构|<br>  |语义动作|建立每个短语对应的抽象语法树|<br>  |语义分析|确定每个短语的含义，建立变量和其声明的关联，检查表达式的类型，翻译每个短语|<br>  |栈帧布局|按机器要求的方式将变量、函数参数等分配于活跃记录内|<br>  |翻译|生成中间表示树（IR树）|<br>  |规范化|提取表达式中的副作用，整理条件分支，以方便下一阶段的处理|<br>  |指令选择|将IR树节点组合成与目标机指令相对应的块|<br>  |控制流分析|分析指令的顺序并建立控制流图，此图表示程序执行时可能流经的所有控制流|<br>  |数据流分析|收集程序变量的数据流信息|<br>  |寄存器分配|为程序中的每一个变量和临时数据选择一个寄存器，不在同一点活跃的两个变量可以共享同一个寄存器|<br>  |代码流出|用机器寄存器替代每一条机器指令中出现的临时变量名|</li>
 </ul>
 <hr>
 <h3 id="工具和软件"><a href="#工具和软件" class="headerlink" title="工具和软件"></a>工具和软件</h3><ul>
@@ -346,7 +346,7 @@
 <li>编译器中的许多重要的数据结构都是被编译程序的中间表示，它们常常采用树的形式</li>
 <li>源代码形式不易处理</li>
 <li>采用树数据结构 每一条语句（Stm）和每一个表达式（Exp）都有一个树节点</li>
-<li>直线型程序设计语言（没有if和循环）<br>  |形式|类型|<br>  |—|—:|<br>  |Stm → Stm;Stm|CompoundStm|<br>  |Stm → id:=Exp|AssignStm|<br>  |Stm → print(ExpList)|PrintStm|<br>  |Exp → id|IdExp|<br>  |Exp → num|NumExp|<br>  |Exp → Exp Binop Exp|OpExp|<br>  |Exp → (Stm,Exp)|EseqExp|<br>  |ExpList → Exp,ExpList|PairExpList|<br>  |ExpList → Exp|LastExpList|<br>  |Binop → + - * /|Plus Minus Times Div|   </li>
+<li>直线型程序设计语言（没有if和循环）<br>  |形式|类型|<br>  |:—|:—|<br>  |Stm → Stm;Stm|CompoundStm|<br>  |Stm → id:=Exp|AssignStm|<br>  |Stm → print(ExpList)|PrintStm|<br>  |Exp → id|IdExp|<br>  |Exp → num|NumExp|<br>  |Exp → Exp Binop Exp|OpExp|<br>  |Exp → (Stm,Exp)|EseqExp|<br>  |ExpList → Exp,ExpList|PairExpList|<br>  |ExpList → Exp|LastExpList|<br>  |Binop → + - * /|Plus Minus Times Div|   </li>
 <li><p>一个例子</p>
 <ul>
 <li>a:=5+3;b:=(print(a,a-1),10*a);print(b)<br>(此处省略一个树形结构图)</li>
