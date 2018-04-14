@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="javaScript," />
+  <meta name="keywords" content="js," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
-<meta name="keywords" content="javaScript">
+<meta name="description" content="闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789101112131415161718function createComparisonFunction( propertyName )&amp;#123;    //返回一个匿名函数，这个匿名函数就是闭包    //这个函数会将包含函数createComparisonFunction的活动对象添加到它的作用域链中。这样它就能访问其">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js内存管理">
-<meta property="og:url" content="http:/KatherineJY.github.io/2017/11/15/js-gc/index.html">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="http:/KatherineJY.github.io/2018/04/14/闭包/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
+<meta property="og:description" content="闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789101112131415161718function createComparisonFunction( propertyName )&amp;#123;    //返回一个匿名函数，这个匿名函数就是闭包    //这个函数会将包含函数createComparisonFunction的活动对象添加到它的作用域链中。这样它就能访问其">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-15T02:51:15.231Z">
+<meta property="og:updated_time" content="2018-04-14T11:29:00.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js内存管理">
-<meta name="twitter:description" content="摘录自这个文档：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management  Introduction JavaScript values are allocated when things  are created and “automatically” freed when they are not use">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="闭包 闭包是指有权访问另一个函数作用域中的变量的函数。  123456789101112131415161718function createComparisonFunction( propertyName )&amp;#123;    //返回一个匿名函数，这个匿名函数就是闭包    //这个函数会将包含函数createComparisonFunction的活动对象添加到它的作用域链中。这样它就能访问其">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/2017/11/15/js-gc/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2018/04/14/闭包/"/>
 
 
 
 
 
-  <title>js内存管理 | KatherineJY</title>
+  <title>闭包 | KatherineJY</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/15/js-gc/">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2018/04/14/闭包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KatherineJY">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js内存管理</h1>
+          <h1 class="post-title" itemprop="name headline">闭包</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T09:37:37+08:00">
-                2017-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T15:51:10+08:00">
+                2018-04-14
               </time>
             
 
@@ -330,58 +330,23 @@
       
 
       
-        <p>摘录自这个文档：<br><code>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management</code></p>
+        <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComparisonFunction</span>(<span class="params"> propertyName </span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//返回一个匿名函数，这个匿名函数就是闭包</span></div><div class="line">    <span class="comment">//这个函数会将包含函数createComparisonFunction的活动对象添加到它的作用域链中。这样它就能访问其中的变量propertyName</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> object1, object2 </span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> value1 = object1[ propertyName ];</div><div class="line">        <span class="keyword">var</span> value2 = object2[ propertyName ];</div><div class="line"></div><div class="line">        <span class="keyword">if</span> ( value1 &lt; value2 )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( value1 &gt; value2 )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><blockquote>
-<p>JavaScript values are allocated when things  are created and “automatically” freed when they are not used anymore.</p>
+<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><blockquote>
+<p>闭包只能取得包含函数中任何变量的最后一个值</p>
 </blockquote>
-<p>js对象在被创建时分配内存，当它们不再被使用时被自动释放。然而这里的“自动”并不意味着程序员就可以不管这些对象的内存释放。<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> results = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++ ) &#123;</div><div class="line">        <span class="comment">//每一个result[i]都绑定一个闭包的引用</span></div><div class="line">        <span class="comment">//它的作用域是全局作用域和createFunctions的作用域</span></div><div class="line">        <span class="comment">//但是里面的return i是在闭包执行时才会被调用到，而不是在绑定闭包时调用，这个时候结束了所有result[i]的函数绑定，i=10。所以当执行具体的return i时，调用的都哦度是createFunctions作用域中的i，所以都是10。</span></div><div class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++ ) &#123;</div><div class="line">        <span class="comment">//result[i]是返回的闭包函数立即执行后得到的结果，即num。在立即执行时，将i作为参数传入</span></div><div class="line">        <span class="comment">//函数是按值传递的，所以在绑定函数的时候会创建i的副本，赋给num</span></div><div class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">            <span class="comment">//返回一个闭包</span></div><div class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">return</span> num;</div><div class="line">            &#125;</div><div class="line">        &#125;(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="Memory-life-cycle"><a href="#Memory-life-cycle" class="headerlink" title="Memory life cycle"></a>Memory life cycle</h3><ul>
-<li><h4 id="Allocation-in-JavaScript"><a href="#Allocation-in-JavaScript" class="headerlink" title="Allocation in JavaScript"></a>Allocation in JavaScript</h4><ul>
-<li><p>Value initialization</p>
-<ol>
-<li>当声明变量<code>declaring values</code>的时候会分配内存空间</li>
-<li>当定义函数的时候也会创建对象并为该对象分配内存，创建的是<code>a callback object</code></li>
-<li>funtion expression(理解为匿名函数表达式？？)也会引发内存分配 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">someElement.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      ...  </div><div class="line">&#125;,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>Allocation via function calls</p>
-<ol>
-<li><p>有些函数会引发对象的内存分配</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"> <span class="comment">//为变量d分配一个Date()对象的内存空间</span></div><div class="line"> <span class="keyword">var</span> e = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</div><div class="line"><span class="comment">//为变量e分配一个DOM元素的内存空间</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>有些方法会为新的变量或对象分配空间<br> （感觉讲的和上面那个好像）</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'azerty'</span>;</div><div class="line"><span class="keyword">var</span> s2 = s.substr(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line"><span class="comment">//String是不可改变的，所以js并不分配一个存储string的内存，而是只保存范围0~3</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a = [<span class="string">'ouais ouais'</span>,<span class="string">'nnn'</span>];</div><div class="line"><span class="keyword">var</span> a2 = [<span class="string">'nnn'</span>,<span class="string">'ddd'</span>];</div><div class="line"><span class="keyword">var</span> a3 = a.concat(a2); </div><div class="line"><span class="comment">//新数组是前两个数组的连接</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h4 id="Release-when-the-memory-is-not-needed-anymore"><a href="#Release-when-the-memory-is-not-needed-anymore" class="headerlink" title="Release when the memory is not needed anymore"></a>Release when the memory is not needed anymore</h4><blockquote>
-<p>to find when “the allocated memory is not needed any longer”; to determine where in the program such piece of memory is not needed anymore and free it.</p>
-<p>“garbage collector” whose job is to track memory allocation and use in order to find when a piece of allocated memory is not needed any longer in which case, it will automatically free it. This process is an approximation since the general problem of knowing whether some piece of memory is needed is undecidable (can’t be solved by an algorithm).</p>
-<h5 id="garbage-collector"><a href="#garbage-collector" class="headerlink" title="garbage collector"></a>garbage collector</h5><ul>
-<li>References</li>
-<li>References-counting garbage collector<ul>
-<li>当一个对象不再被其他对象引用时，就认为它是not needed anymore,它就可以被垃圾收集器收集。</li>
-<li>Limitation: cycles<br> 最简单的一个例子就是有两个对象，这两个对象相互引用,那这两个对象都至少有一个引用，谁都不能再谁之前先被消除。即使它们俩都无用了，也无法通过引用计数这个算法计算出来。</li>
-</ul>
-</li>
-<li>Mark-and-sweep algorithm<ul>
-<li><blockquote>
-<p>reduces the definition of “an object is not needed anymore” to “an object is unreachable”</p>
-</blockquote>
-</li>
-<li>这个算法定义一些根对象（在js中就是全局对象）。垃圾收集器定期从这些根对象出发，找到引用这些对象的对象，再找引用新发现的对象的对象，以此类推。这些找到的对象就是所有的reachable objects。那么其余的就是unreachable objects，由垃圾收集器收集。</li>
-<li>Limitation: objects need to be made explicitly unreachable。对象需要被显式地表达为不可达，但在现实中很少涉及。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-</li>
-</ul>
+<h3 id="this对象"><a href="#this对象" class="headerlink" title="this对象"></a>this对象</h3><p>Todo</p>
+<hr>
+<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>Todo</p>
+<hr>
+<h3 id="模仿块级作用域链"><a href="#模仿块级作用域链" class="headerlink" title="模仿块级作用域链"></a>模仿块级作用域链</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//这里是块级作用域</span></div><div class="line">&#125;)();</div><div class="line"><span class="comment">//function()&#123;&#125;表示函数声明，后面不能直接接()。但是可以用()包裹function()&#123;&#125;将它变为函数表达式。</span></div></pre></td></tr></table></figure>
+<p>这种技术可以限制向作用域中添加过多的变量和函数</p>
 
       
     </div>
@@ -399,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -412,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/13/process-communication-3/" rel="next" title="进程通信3——socket">
-                <i class="fa fa-chevron-left"></i> 进程通信3——socket
+              <a href="/2017/11/30/java-duotai/" rel="next" title="多态">
+                <i class="fa fa-chevron-left"></i> 多态
               </a>
             
           </div>
@@ -421,10 +386,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/16/js-object/" rel="prev" title="javascritp 继承和原型链">
-                javascritp 继承和原型链 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memory-life-cycle"><span class="nav-number">2.</span> <span class="nav-text">Memory life cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Allocation-in-JavaScript"><span class="nav-number">2.1.</span> <span class="nav-text">Allocation in JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Release-when-the-memory-is-not-needed-anymore"><span class="nav-number">2.2.</span> <span class="nav-text">Release when the memory is not needed anymore</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#garbage-collector"><span class="nav-number">2.2.1.</span> <span class="nav-text">garbage collector</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包与变量"><span class="nav-number">2.</span> <span class="nav-text">闭包与变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this对象"><span class="nav-number">3.</span> <span class="nav-text">this对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄露"><span class="nav-number">4.</span> <span class="nav-text">内存泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模仿块级作用域链"><span class="nav-number">5.</span> <span class="nav-text">模仿块级作用域链</span></a></li></ol></div>
             
 
           </div>

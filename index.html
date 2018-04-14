@@ -262,6 +262,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2018/04/14/闭包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/14/闭包/" itemprop="url">闭包</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T15:51:10+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComparisonFunction</span>(<span class="params"> propertyName </span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//返回一个匿名函数，这个匿名函数就是闭包</span></div><div class="line">    <span class="comment">//这个函数会将包含函数createComparisonFunction的活动对象添加到它的作用域链中。这样它就能访问其中的变量propertyName</span></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> object1, object2 </span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> value1 = object1[ propertyName ];</div><div class="line">        <span class="keyword">var</span> value2 = object2[ propertyName ];</div><div class="line"></div><div class="line">        <span class="keyword">if</span> ( value1 &lt; value2 )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ( value1 &gt; value2 )&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h3><blockquote>
+<p>闭包只能取得包含函数中任何变量的最后一个值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> results = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++ ) &#123;</div><div class="line">        <span class="comment">//每一个result[i]都绑定一个闭包的引用</span></div><div class="line">        <span class="comment">//它的作用域是全局作用域和createFunctions的作用域</span></div><div class="line">        <span class="comment">//但是里面的return i是在闭包执行时才会被调用到，而不是在绑定闭包时调用，这个时候结束了所有result[i]的函数绑定，i=10。所以当执行具体的return i时，调用的都哦度是createFunctions作用域中的i，所以都是10。</span></div><div class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++ ) &#123;</div><div class="line">        <span class="comment">//result[i]是返回的闭包函数立即执行后得到的结果，即num。在立即执行时，将i作为参数传入</span></div><div class="line">        <span class="comment">//函数是按值传递的，所以在绑定函数的时候会创建i的副本，赋给num</span></div><div class="line">        result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">            <span class="comment">//返回一个闭包</span></div><div class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">return</span> num;</div><div class="line">            &#125;</div><div class="line">        &#125;(i);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="this对象"><a href="#this对象" class="headerlink" title="this对象"></a>this对象</h3><p>Todo</p>
+<hr>
+<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>Todo</p>
+<hr>
+<h3 id="模仿块级作用域链"><a href="#模仿块级作用域链" class="headerlink" title="模仿块级作用域链"></a>模仿块级作用域链</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//这里是块级作用域</span></div><div class="line">&#125;)();</div><div class="line"><span class="comment">//function()&#123;&#125;表示函数声明，后面不能直接接()。但是可以用()包裹function()&#123;&#125;将它变为函数表达式。</span></div></pre></td></tr></table></figure>
+<p>这种技术可以限制向作用域中添加过多的变量和函数</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/30/java-duotai/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1454,159 +1590,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/13/process-communication-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KatherineJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KatherineJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/process-communication-3/" itemprop="url">进程通信3——socket</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:58:53+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>server： 初始化Winsock -&gt; 创建套接字 -&gt; 绑定套接字 -&gt; 将套接字置于监听状态 -&gt; 接受客户连接 -&gt; 读写操作<br>client： 初始化Winsock -&gt; 创建套接字 -&gt; 连接服务器</p>
-<hr>
-<h3 id="涉及的函数和方法"><a href="#涉及的函数和方法" class="headerlink" title="涉及的函数和方法"></a>涉及的函数和方法</h3><ul>
-<li><p>Winsock初始化</p>
-<ul>
-<li>windows API是通过Ws2_32.dll来实现的。Ws2_32.dll通过程序与Ws2_32.lib链接来访问。</li>
-<li><p>WSAStartup 必须在调用任何Winsock函数前，先调用这个函数进行初始化</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//WSAStartup function</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">WSAStartup</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_  WORD      wVersionRequested,  <span class="comment">//winsock dll的版本</span></span></span></div><div class="line"><span class="function"><span class="params">    _Out_ LPWSADATA lpWSAData           <span class="comment">//用于返回dll的配置信息</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>WSACleanup 不使用任何Winsock函数时，调用此函数</p>
-</li>
-</ul>
-</li>
-<li><p>socket function</p>
-  <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建套接字</span></div><div class="line"><span class="function">SOCKET WSAAPI <span class="title">socket</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span> af,        <span class="comment">//地址族</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span> type,      <span class="comment">//类型，面向连接 or 面向数据通报信</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span> protocol   <span class="comment">//协议</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>bind function</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绑定套接字</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ SOCKET                s,       <span class="comment">//一个未绑定的套接字</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">const</span> struct sockaddr *name,   <span class="comment">//套接字用到的协议及相关信息</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span>                   namelen  <span class="comment">//套接字信息的长度</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>listen function</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//侦听套接字</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">listen</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ SOCKET s,          <span class="comment">//套接字</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span>    backlog     <span class="comment">//表示在该套接字上排队的连接请求的数量</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>connect function</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//连接到服务器</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">listen</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ SOCKET s,          <span class="comment">//套接字</span></span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span>    backlog     <span class="comment">//表示在该套接字上排队的连接请求的数量</span></span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>accept function</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//accept会阻塞，等待客户连接</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">connect</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_ SOCKET                s,</span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">const</span> struct sockaddr *name,</span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span>                   namelen</span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div><div class="line">* send function</div><div class="line">```c++</div><div class="line"><span class="comment">//发送数据</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">send</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_       SOCKET s,</span></span></div><div class="line"><span class="function"><span class="params">    _In_ <span class="keyword">const</span> <span class="keyword">char</span>   *buf,</span></span></div><div class="line"><span class="function"><span class="params">    _In_       <span class="keyword">int</span>    len,</span></span></div><div class="line"><span class="function"><span class="params">    _In_       <span class="keyword">int</span>    flags</span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>recv function</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//接受数据</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">recv</span><span class="params">(</span></span></div><div class="line"><span class="function"><span class="params">    _In_  SOCKET s,</span></span></div><div class="line"><span class="function"><span class="params">    _Out_ <span class="keyword">char</span>   *buf,</span></span></div><div class="line"><span class="function"><span class="params">    _In_  <span class="keyword">int</span>    len,</span></span></div><div class="line"><span class="function"><span class="params">    _In_  <span class="keyword">int</span>    flags</span></span></div><div class="line"><span class="function"><span class="params">)</span></span>;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//server.cpp</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> UNICODE</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> UNICODE</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> WIN32_LEAN_AND_MEAN</span></div><div class="line"><span class="comment">//为了避免winSocket新旧函数名的影响导致编译错误，一定要把下面这句加上</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _WINSOCK_DEPRECATED_NO_WARNINGS</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;winsock2.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Ws2tcpip.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Ws2_32.lib"</span>)</span></div><div class="line"><span class="comment">//头文件啥的没太搞清楚，基本就是一个个试着加着用</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    WSADATA wsaData;</div><div class="line">    <span class="comment">//初始化Winsock</span></div><div class="line">    <span class="keyword">if</span> ( WSAStartup(MAKEWORD(<span class="number">2</span>, <span class="number">2</span>), &amp;wsaData) != NO_ERROR) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	</div><div class="line">    SOCKET ListenSocket = INVALID_SOCKET;</div><div class="line">    sockaddr_in service;</div><div class="line">    <span class="comment">//创建套接字</span></div><div class="line">    <span class="comment">//AF_INET IPv4协议族</span></div><div class="line">    <span class="comment">//SOCK_STREAM 面向数据通报信</span></div><div class="line">    <span class="comment">//IPPROTO_TCP TCP协</span></div><div class="line">    ListenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</div><div class="line">    <span class="keyword">if</span> (ListenSocket == INVALID_SOCKET) &#123;</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//设置套接字地址。指定用到的协议、IP地址、端口</span></div><div class="line">    service.sin_family = AF_INET;   <span class="comment">//IPv4协议族</span></div><div class="line">    service.sin_addr.s_addr = inet_addr(<span class="string">"127.0.0.1"</span>);   <span class="comment">//IP地址</span></div><div class="line">    service.sin_port = htons(<span class="number">27015</span>);    <span class="comment">//端口</span></div><div class="line">    <span class="comment">//绑定套接字</span></div><div class="line">    <span class="keyword">if</span> (bind(ListenSocket, (SOCKADDR *)&amp;service, <span class="keyword">sizeof</span>(service)) == SOCKET_ERROR) &#123;</div><div class="line">        closesocket(ListenSocket);</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//将套接字置于侦听状态</span></div><div class="line">    <span class="comment">//SOMAXCONN 连接数目设置为最大值</span></div><div class="line">    <span class="keyword">if</span> (listen(ListenSocket, SOMAXCONN) == SOCKET_ERROR)&#123;</div><div class="line">        closesocket(ListenSocket);</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//接受客户连接</span></div><div class="line">    SOCKET AcceptSocket = accept(ListenSocket, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</div><div class="line">    <span class="keyword">if</span> (AcceptSocket == INVALID_SOCKET) &#123;</div><div class="line">        closesocket(ListenSocket);</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">char</span> *sendbuf = <span class="string">"this is a test"</span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"message is %s\n"</span>, sendbuf);</div><div class="line">    <span class="comment">//向客户发送信息</span></div><div class="line">    send(AcceptSocket, sendbuf, (<span class="keyword">int</span>)<span class="built_in">strlen</span>(sendbuf), <span class="number">0</span>);</div><div class="line">    WSACleanup();</div><div class="line">    system(<span class="string">"PAUSE"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//client.cpp</span></div><div class="line">...</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    WSADATA wsaData;</div><div class="line">    <span class="keyword">int</span> iResult;</div><div class="line">    <span class="comment">//初始化Winsock</span></div><div class="line">    <span class="keyword">if</span> (WSAStartup(MAKEWORD(<span class="number">2</span>, <span class="number">2</span>), &amp;wsaData) != NO_ERROR) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    SOCKET ConnectSocket = INVALID_SOCKET;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">clientService</span>;</span></div><div class="line">    <span class="comment">//创建套接字</span></div><div class="line">    <span class="keyword">if</span> ( ( ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) ) == INVALID_SOCKET) &#123;</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//设置套接字地址。指定用到的协议、IP地址、端口</span></div><div class="line">    <span class="comment">//这些信息应是与服务器正处于监听的套接字的信息相同</span></div><div class="line">    clientService.sin_family = AF_INET;</div><div class="line">    clientService.sin_addr.s_addr = inet_addr(<span class="string">"127.0.0.1"</span>);</div><div class="line">    clientService.sin_port = htons(<span class="number">27015</span>);</div><div class="line">    </div><div class="line">    <span class="comment">//连接服务器</span></div><div class="line">    <span class="keyword">if</span> (connect(ConnectSocket, (SOCKADDR*)&amp;clientService, <span class="keyword">sizeof</span>(clientService)) == SOCKET_ERROR) &#123;</div><div class="line">        WSACleanup();</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">char</span> *sendbuf = <span class="string">"this is a test"</span>;</div><div class="line">    <span class="keyword">char</span> buf[DEFAULT_BUFLEN];</div><div class="line">    <span class="keyword">int</span> buflen = DEFAULT_BUFLEN;</div><div class="line">    <span class="built_in">memset</span>(buf, <span class="number">0</span>, <span class="keyword">sizeof</span>(buf));</div><div class="line">    <span class="comment">//接受数据</span></div><div class="line">    <span class="keyword">if</span> (recv(ConnectSocket, buf,buflen, <span class="number">0</span>) &gt; <span class="number">0</span>)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Bytes received: message is%s\n"</span>, buf);</div><div class="line">    WSACleanup();</div><div class="line">    system(<span class="string">"PAUSE"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1661,7 +1644,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
