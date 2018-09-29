@@ -262,6 +262,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/flex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/09/flex/" itemprop="url">flex布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T02:43:24+08:00">
+                2017-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近，写页面的时候，为了偷懒，去学了一下flex布局。之前，和勾兑粑粑一起看过，但是没有实用过。这次写了之后，发现真的超级方便，尤其是用来解决垂直居中的问题。</p>
+<hr>
+<p>对于容器来说，设定display:flex，那么它就变成了了flex container。内部元素就可以根据相关属性来弹性布局。</p>
+<ol>
+<li>flex direction定义元素排列的主轴。横向从左到右、横向从右到左、纵向从上到下，纵向从下到上。</li>
+<li>flex-wrap 定义在主轴上换不换行。换行的话，先填满上面的行还是下面的行。如果主轴是竖的，就是换不换列。</li>
+<li>justicy-content用来处理主轴上元素间的空隙的，也可以说是处理元素间的对齐方式。空隙全在一侧、均匀分布在元素之间，等等。。</li>
+<li>align-item处理元素在交叉轴上的对齐方式。垂直居中，用align-item:center来实现就非常方便。</li>
+</ol>
+<hr>
+<p>对于在flex container内的元素，还有以下这些性质：</p>
+<ol>
+<li>order <ul>
+<li>用来定义flex container内的元素在主轴排列方向上的顺序。没用上</li>
+</ul>
+</li>
+<li>flex：flex grow、flex shrink、flex basis<ul>
+<li>一定要试试才能搞得懂的一条属性。flex basis元素本来的大小（根据这个来计算主轴上是否有多余的空间）；flex grow有空余的话是否放大，放大的比例；flex shrink空间不足是否缩小，缩小的比例。这个可以用来写网格布局，前两项置0，通过flex basis安排每个网格元素的大小。用起来有种用bootstrap的栅格元素的感觉，很方便。</li>
+</ul>
+</li>
+<li>align-self允许某个元素定义自己在交叉轴上的对齐方式，可以覆盖掉flex container的align-item属性的作用</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/strategy-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1064,12 +1205,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
             
 
             
