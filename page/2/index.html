@@ -262,6 +262,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/16/js-object/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/16/js-object/" itemprop="url">javascritp 继承和原型链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T16:26:25+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Inheritance-and-the-prototype-chain"><a href="#Inheritance-and-the-prototype-chain" class="headerlink" title="Inheritance and the prototype chain"></a>Inheritance and the prototype chain</h1><p>摘录自<br><code>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</code></p>
+<blockquote>
+<p> When it comes to inheritance, JavaScript only has one construct: objects. Each object has a private property (referred to as [[Prototype]] ) which holds a link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. By definition, null has no prototype, and acts as the final link in this prototype chain.</p>
+</blockquote>
+<p>根据上面的描述 原型链大概是这样的：</p>
+<p>A -&gt; A的原型 -&gt; A的原型的原型 -&gt; … -&gt; null</p>
+<hr>
+<h3 id="Inheritance-with-the-prototype-chain"><a href="#Inheritance-with-the-prototype-chain" class="headerlink" title="Inheritance with the prototype chain"></a>Inheritance with the prototype chain</h3><ul>
+<li><h4 id="Inheriting-properties"><a href="#Inheriting-properties" class="headerlink" title="Inheriting properties"></a>Inheriting properties</h4><blockquote>
+<p>When trying to access a property of an object, the property will not only be sought on the object but on the prototype of the object, the prototype of the prototype, and so on until either a property with a matching name is found or the end of the prototype chain is reached.</p>
+</blockquote>
+<p>  当在一个对象中查找某个属性时，并不仅仅在这个对象上查找属性。而是会这个对象所在的原型链上由浅及深地去查找。</p>
+</li>
+<li><h4 id="Inheriting-“methods”"><a href="#Inheriting-“methods”" class="headerlink" title="Inheriting “methods”"></a>Inheriting “methods”</h4><blockquote>
+<p>In JavaScript, any function can be added to an object in the form of a property. An inherited function acts just as any other property.</p>
+<p>When an inherited function is executed, the value of <code>this</code> points to the inheriting object, not to the prototype object where the function is an own property.</p>
+</blockquote>
+<p>  在js中，function可以以属性的形式被添加到对象中。当一个对象继承一个方法时，this指向的是继承别人方法的那个对象，而不是那个方法所属的对象。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Different-ways-to-create-objects-and-the-resulting-prototype-chain"><a href="#Different-ways-to-create-objects-and-the-resulting-prototype-chain" class="headerlink" title="Different ways to create objects and the resulting prototype chain"></a>Different ways to create objects and the resulting prototype chain</h3><ul>
+<li><h4 id="Objects-created-with-syntax-constructs"><a href="#Objects-created-with-syntax-constructs" class="headerlink" title="Objects created with syntax constructs"></a>Objects created with syntax constructs</h4><ul>
+<li><p>普通对象o</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</div><div class="line"><span class="comment">// prototype chain :</span></div><div class="line"><span class="comment">// o ---&gt; Object.prototype ---&gt; null</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>数组对象</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = [<span class="string">'yo'</span>, <span class="string">'whadup'</span>, <span class="string">'?'</span>];</div><div class="line"><span class="comment">// prototype chain :</span></div><div class="line"><span class="comment">// b ---&gt; Array.prototype ---&gt; Object.prototype ---&gt; null</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>function</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// prototype chain :</span></div><div class="line"><span class="comment">// f ---&gt; Function.prototype ---&gt; Object.prototype ---&gt; null</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="With-a-constructor"><a href="#With-a-constructor" class="headerlink" title="With a constructor"></a>With a constructor</h4><blockquote>
+<p>A “constructor” in JavaScript is “just” a function that happens to be called with the new operator.</p>
+</blockquote>
+<p>  这句话挺不好理解的，所以就去看了new operator的解释。</p>
+<blockquote>
+<p>The new operator creates an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
+</blockquote>
+<p>  new operator指的是产生一个用户自定义对象类型 或 产生一个有构造方法内建对象类型。然后构造器就是一个被叫做new operator的方法。<br>  （？？个人是不能理解这个解释的  循环论证吗?）</p>
+<p>  在给的demo基础上做了些小测试，弄得自己很confused(扶额),姑且说说我的理解吧。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Graph</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.vertices = [];</div><div class="line">    <span class="keyword">this</span>.edges = [];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Graph.prototype = &#123;</div><div class="line">    addVertex: <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.vertices.push(v);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> g = <span class="keyword">new</span> Graph();</div><div class="line"><span class="comment">//g.__proto__ == Graph.prototype</span></div></pre></td></tr></table></figure>
+<p>  下面是在测试台做的一些测试：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Graph();</div><div class="line">g.__proto__ == f.__proto__</div><div class="line"><span class="literal">true</span></div><div class="line"><span class="comment">//这说明g.__proto__、f.__proto__都是Graph.prototype的引用，而不是Graph.prototype的两个实例。</span></div><div class="line"></div><div class="line">Graph.prototype = &#123;</div><div class="line">    test : <span class="number">1</span>,</div><div class="line">    addVertex: <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.vertices.push(v);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">g.test</div><div class="line"><span class="number">1</span></div><div class="line"><span class="comment">//这就和前面介绍的一样 顺着原型链去找属性</span></div><div class="line">g.test=<span class="number">2</span></div><div class="line"><span class="comment">//输入了上面那句之后 发现对象g中多了一个属性test=2，g的原型并没有变化</span></div><div class="line">g.__proto__.test=<span class="number">2</span></div><div class="line"><span class="comment">//如果这样写的话，g中并不会添加一个自有属性test，但是原型中的test值会改变</span></div></pre></td></tr></table></figure>
+</li>
+<li><h4 id="With-Object-create"><a href="#With-Object-create" class="headerlink" title="With Object.create"></a>With Object.create</h4><blockquote>
+<p>ECMAScript 5 introduced a new method: Object.create(). Calling this method creates a new object.The prototype of this object is the first argument of the function:</p>
+</blockquote>
+<p>  这个对象的原型是create方法的第一个参数</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;; </div><div class="line"><span class="comment">// a ---&gt; Object.prototype ---&gt; null</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="built_in">Object</span>.create(a);</div><div class="line"><span class="comment">// b ---&gt; a ---&gt; Object.prototype ---&gt; null</span></div><div class="line"><span class="comment">// 它的原型链上第一个对象是a</span></div><div class="line"><span class="built_in">console</span>.log(b.a); <span class="comment">// 1 继承了a的属性</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> c = <span class="built_in">Object</span>.create(b);</div><div class="line"><span class="comment">// c ---&gt; b ---&gt; a ---&gt; Object.prototype ---&gt; null</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> d = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line"><span class="comment">// d ---&gt; null</span></div><div class="line"><span class="built_in">console</span>.log(d.hasOwnProperty); </div><div class="line"><span class="comment">// undefined </span></div><div class="line"><span class="comment">// hasOwnProperty是Object的方法，而d的原型是null，并没有继承Object，所以这个方法时未定义的</span></div></pre></td></tr></table></figure>
+</li>
+<li><h4 id="With-the-class-keyword"><a href="#With-the-class-keyword" class="headerlink" title="With the class keyword"></a>With the class keyword</h4><blockquote>
+<p>JavaScript remains prototype-based. The new keywords include class, constructor, static, extends, and super.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="prototype-and-Object-getPrototypeOf"><a href="#prototype-and-Object-getPrototypeOf" class="headerlink" title="prototype and Object.getPrototypeOf"></a>prototype and Object.getPrototypeOf</h3><blockquote>
+<p>The reference to the prototype object is copied to the internal [[Prototype]] property of the new instance. </p>
+<p>For example, when you do var a1 = new A(), JavaScript (after creating the object in memory and before running function A() with this defined to it) sets a1.[[Prototype]] = A.prototype. </p>
+<p>all the stuff you define in prototype is effectively shared by all instances, and you can even later change parts of prototype and have the changes appear in all existing instances, if you wanted to.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Foo();</div><div class="line"><span class="comment">// JavaScript actually just does</span></div><div class="line"><span class="comment">// var o = new Object();</span></div><div class="line"><span class="comment">// o.[[Prototype]] = Foo.prototype;</span></div><div class="line"><span class="comment">// Foo.call(o);</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/15/js-gc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1419,133 +1603,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/09/c-dll/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KatherineJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KatherineJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/09/c-dll/" itemprop="url">c++编写使用dll</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T02:46:56+08:00">
-                2017-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="静态库-amp-动态库"><a href="#静态库-amp-动态库" class="headerlink" title="静态库&amp;动态库"></a>静态库&amp;动态库</h3><ul>
-<li>静态库：在编译时，lib里面的函数、变量和应用程序一起编译到.exe里</li>
-<li>动态库：不会编译到.exe里。在程序运行到需要调用函数的时候，才从dll中取用</li>
-<li>对比：产品发布时，一般就是发布exe文件。所以使用静态库时，产品难以修改、升级。但是使用静态链接库，运行速度会较快。动态链接库的优势主要在于易于升级，便于多语言编程。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/09/c-dll/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1600,7 +1657,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
