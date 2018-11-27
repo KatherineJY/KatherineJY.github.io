@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Pieces solve a puzzle!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KatherineJY">
-<meta property="og:url" content="http:/KatherineJY.github.io/tags/css/index.html">
+<meta name="description" content="Host Planning and Disk Partitioning Disk partition format: MBR (Master Boot Record) &amp;amp; GPT (GUID partition table). MBR Format Master Boot Record, MBR (Store the boot manager, 446 bytes) partition t">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 1">
+<meta property="og:url" content="http:/KatherineJY.github.io/2018/11/27/Linux-1/index.html">
 <meta property="og:site_name" content="KatherineJY">
-<meta property="og:description" content="Pieces solve a puzzle!">
+<meta property="og:description" content="Host Planning and Disk Partitioning Disk partition format: MBR (Master Boot Record) &amp;amp; GPT (GUID partition table). MBR Format Master Boot Record, MBR (Store the boot manager, 446 bytes) partition t">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-27T02:12:31.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KatherineJY">
-<meta name="twitter:description" content="Pieces solve a puzzle!">
+<meta name="twitter:title" content="Linux 1">
+<meta name="twitter:description" content="Host Planning and Disk Partitioning Disk partition format: MBR (Master Boot Record) &amp;amp; GPT (GUID partition table). MBR Format Master Boot Record, MBR (Store the boot manager, 446 bytes) partition t">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:/KatherineJY.github.io/tags/css/"/>
+  <link rel="canonical" href="http:/KatherineJY.github.io/2018/11/27/Linux-1/"/>
 
 
 
 
 
-  <title>标签: css | KatherineJY</title>
+  <title>Linux 1 | KatherineJY</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,54 +249,199 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>css<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2018/11/27/Linux-1/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/09/flex/" itemprop="url">
-              
-                <span itemprop="name">flex布局</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Linux 1</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-09T02:43:24+08:00"
-              content="2017-11-09" >
-          11-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T10:05:36+08:00">
+                2018-11-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Host-Planning-and-Disk-Partitioning"><a href="#Host-Planning-and-Disk-Partitioning" class="headerlink" title="Host Planning and Disk Partitioning"></a>Host Planning and Disk Partitioning</h3><ol>
+<li>Disk partition format: MBR (Master Boot Record) &amp; GPT (GUID partition table).</li>
+<li>MBR Format<ul>
+<li>Master Boot Record, MBR (Store the boot manager, 446 bytes)</li>
+<li>partition table (64 bytes) Since the partition table is only 64 bytes in capacity, there can be at most four groups of recording areas, and each group of recording areas records the starting and ending numbers of cylinder.</li>
+<li>There can be at most one extension segmentation and the logical segmentation is a segmentation groove divided by it. </li>
+</ul>
+</li>
+<li>GUID partition table<ul>
+<li>Logical Block Address, LBA</li>
+<li>structure<ul>
+<li>LBA0 (MBR)</li>
+<li>LBA1 (GBT header: position and size of partition table, position of backup GPT partition, check code)</li>
+<li>LBA2-33 (starting and ending numbers of cylinder)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BIOS<ul>
+<li>CMOS (A memory that records various hardware parameters and is embedded on the motherboard); BIOS (A software written to the motherboard)</li>
+<li>process of turning up a computer<ol>
+<li>BIOS</li>
+<li>MBR</li>
+<li>Boot Loader</li>
+<li>System core file</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Shut-Down-Linux-Correctly"><a href="#Shut-Down-Linux-Correctly" class="headerlink" title="Shut Down Linux Correctly"></a>Shut Down Linux Correctly</h3><ul>
+<li>netstat -a (network connection)</li>
+<li>ps -aux (view background program)</li>
+<li>sync</li>
+</ul>
+<hr>
+<h3 id="Permission"><a href="#Permission" class="headerlink" title="Permission"></a>Permission</h3><ul>
+<li>-rwxrwx—<ul>
+<li>-file type<ul>
+<li>[d] directory</li>
+<li>[-] file</li>
+<li>[l] link file</li>
+<li>[b] random access device</li>
+<li>[c] one-time input device</li>
+</ul>
+</li>
+<li>rwx permissions of file owner（readable、writable、executable）</li>
+<li>rwx permissions of file owner’s group</li>
+<li>— others’ permission</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/08/Android-Chapter7/" rel="next" title="Android-Chapter7">
+                <i class="fa fa-chevron-left"></i> Android-Chapter7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -302,6 +449,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -322,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -403,6 +563,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Host-Planning-and-Disk-Partitioning"><span class="nav-number">1.</span> <span class="nav-text">Host Planning and Disk Partitioning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shut-Down-Linux-Correctly"><span class="nav-number">2.</span> <span class="nav-text">Shut Down Linux Correctly</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Permission"><span class="nav-number">3.</span> <span class="nav-text">Permission</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -536,6 +712,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 

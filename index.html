@@ -262,6 +262,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2018/11/27/Linux-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KatherineJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KatherineJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/Linux-1/" itemprop="url">Linux 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T10:05:36+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Host-Planning-and-Disk-Partitioning"><a href="#Host-Planning-and-Disk-Partitioning" class="headerlink" title="Host Planning and Disk Partitioning"></a>Host Planning and Disk Partitioning</h3><ol>
+<li>Disk partition format: MBR (Master Boot Record) &amp; GPT (GUID partition table).</li>
+<li>MBR Format<ul>
+<li>Master Boot Record, MBR (Store the boot manager, 446 bytes)</li>
+<li>partition table (64 bytes) Since the partition table is only 64 bytes in capacity, there can be at most four groups of recording areas, and each group of recording areas records the starting and ending numbers of cylinder.</li>
+<li>There can be at most one extension segmentation and the logical segmentation is a segmentation groove divided by it. </li>
+</ul>
+</li>
+<li>GUID partition table<ul>
+<li>Logical Block Address, LBA</li>
+<li>structure<ul>
+<li>LBA0 (MBR)</li>
+<li>LBA1 (GBT header: position and size of partition table, position of backup GPT partition, check code)</li>
+<li>LBA2-33 (starting and ending numbers of cylinder)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BIOS<ul>
+<li>CMOS (A memory that records various hardware parameters and is embedded on the motherboard); BIOS (A software written to the motherboard)</li>
+<li>process of turning up a computer<ol>
+<li>BIOS</li>
+<li>MBR</li>
+<li>Boot Loader</li>
+<li>System core file</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Shut-Down-Linux-Correctly"><a href="#Shut-Down-Linux-Correctly" class="headerlink" title="Shut Down Linux Correctly"></a>Shut Down Linux Correctly</h3><ul>
+<li>netstat -a (network connection)</li>
+<li>ps -aux (view background program)</li>
+<li>sync</li>
+</ul>
+<hr>
+<h3 id="Permission"><a href="#Permission" class="headerlink" title="Permission"></a>Permission</h3><ul>
+<li>-rwxrwx—<ul>
+<li>-file type<ul>
+<li>[d] directory</li>
+<li>[-] file</li>
+<li>[l] link file</li>
+<li>[b] random access device</li>
+<li>[c] one-time input device</li>
+</ul>
+</li>
+<li>rwx permissions of file owner（readable、writable、executable）</li>
+<li>rwx permissions of file owner’s group</li>
+<li>— others’ permission</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2018/10/08/Android-Chapter7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,137 +1663,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:/KatherineJY.github.io/2017/11/18/js-function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KatherineJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KatherineJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/js-function/" itemprop="url">js Function类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-18T21:18:33+08:00">
-                2017-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>摘录自《JavaScript高级程序设计》</p>
-<hr>
-<ul>
-<li><p>在js中，Function类型也是一个对象，函数名实际上是一个指向函数对象的指针</p>
-<p>  三种定义函数的方法：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num1+num2;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1,num2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num1+num2;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//这个匿名函数是一个对象，sum保存的就是这个对象的引用</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>,<span class="string">"num2"</span>,<span class="string">"return num1+num2"</span>);</div><div class="line"><span class="comment">//这是一个函数表达式</span></div><div class="line"><span class="comment">//不推荐使用这种方法定义函数</span></div><div class="line"><span class="comment">//因为这种方法会导致解析两次代码</span></div><div class="line"><span class="comment">//第一次解析代码,即new Function("")这个构造函数</span></div><div class="line"><span class="comment">//第二次解析传入构造函数中的字符串，包括参数和语句</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/18/js-function/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1676,7 +1717,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1698,7 +1739,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
